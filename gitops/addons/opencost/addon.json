@@ -1,0 +1,1 @@
+{ "addon": "opencost", "namespace": "opencost", "chartRepo": "https://opencost.github.io/opencost-helm-chart", "chartName": "opencost", "chartPath": "", "chartVersion": "2.5.34" }

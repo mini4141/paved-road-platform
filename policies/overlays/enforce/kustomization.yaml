@@ -1,0 +1,6 @@
+# Gradual change: the base audits every non-system namespace; the enforce copies deny in portal-managed ones.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - ../enforce-copy

@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: golden-services
+  labels:
+    team: platform
+spec:
+  groups:
+    - name: golden-services
+      rules:
+        - alert: GoldenServiceHighErrorRate
+          expr: |
+            sum by (namespace, service) (rate(http_requests_total{code=~"5.."}[2m]))
+              / sum by (namespace, service) (rate(http_requests_total[2m])) > {{ .Values.errorRateThreshold }}
+          for: 2m
+          labels:
+            severity: page
+          annotations:
+            summary: "{{ "{{ $labels.service }}" }} is returning more than {{ mulf .Values.errorRateThreshold 100 }}% 5xx"

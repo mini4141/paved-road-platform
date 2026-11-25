@@ -1,0 +1,1 @@
+{ "addon": "tempo", "namespace": "observability", "chartRepo": "https://grafana.github.io/helm-charts", "chartName": "tempo", "chartPath": "", "chartVersion": "1.24.4" }

@@ -1,0 +1,44 @@
+# ArgoCD behind Traefik at /argocd, anonymous read-only for the showcase.
+global:
+  domain: ""
+configs:
+  params:
+    server.insecure: true
+    server.rootpath: /argocd
+    server.basehref: /argocd
+  cm:
+    users.anonymous.enabled: "true"
+    timeout.reconciliation: 60s
+  rbac:
+    policy.default: role:readonly
+dex: { enabled: false }
+notifications: { enabled: false }
+server:
+  replicas: 1
+  resources:
+    requests: { cpu: 50m, memory: 128Mi }
+    limits: { memory: 384Mi }
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    path: /argocd
+    pathType: Prefix
+controller:
+  replicas: 1
+  resources:
+    requests: { cpu: 200m, memory: 384Mi }
+    limits: { memory: 1Gi }
+repoServer:
+  replicas: 1
+  resources:
+    requests: { cpu: 50m, memory: 128Mi }
+    limits: { memory: 512Mi }
+applicationSet:
+  replicas: 1
+  resources:
+    requests: { cpu: 20m, memory: 64Mi }
+    limits: { memory: 256Mi }
+redis:
+  resources:
+    requests: { cpu: 20m, memory: 32Mi }
+    limits: { memory: 128Mi }

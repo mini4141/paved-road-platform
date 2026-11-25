@@ -1,0 +1,42 @@
+- name: Add the Argo Helm repository
+  kubernetes.core.helm_repository:
+    name: argo
+    repo_url: https://argoproj.github.io/argo-helm
+
+- name: Install ArgoCD
+  kubernetes.core.helm:
+    name: argocd
+    chart_ref: argo/argo-cd
+    chart_version: "{{ argocd_chart_version }}"
+    release_namespace: "{{ argocd_namespace }}"
+    create_namespace: true
+    values: "{{ lookup('file', 'values.yaml') | from_yaml }}"
+    wait: true
+    timeout: 10m
+
+- name: Label the in-cluster target so the add-on ApplicationSet selects it (env and registry)
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: cluster-in-cluster
+        namespace: "{{ argocd_namespace }}"
+        labels:
+          argocd.argoproj.io/secret-type: cluster
+          paved-road/cluster: "true"
+          env: "{{ env }}"
+        annotations:
+          registry: "{{ registry }}"
+      stringData:
+        name: in-cluster
+        server: https://kubernetes.default.svc
+        config: '{"tlsClientConfig":{"insecure":false}}'
+
+- name: Apply the app-of-apps root application
+  kubernetes.core.k8s:
+    state: present
+    definition: >-
+      {{ lookup('file', root_app_file) | from_yaml
+         | combine({'spec': {'source': {'repoURL': git_repo_url, 'targetRevision': git_revision}}}, recursive=True) }}

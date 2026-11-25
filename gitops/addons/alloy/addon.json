@@ -1,0 +1,1 @@
+{ "addon": "alloy", "namespace": "observability", "chartRepo": "https://grafana.github.io/helm-charts", "chartName": "alloy", "chartPath": "", "chartVersion": "1.16.0" }

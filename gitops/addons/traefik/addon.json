@@ -1,0 +1,1 @@
+{ "addon": "traefik", "namespace": "traefik", "chartRepo": "https://traefik.github.io/charts", "chartName": "traefik", "chartPath": "", "chartVersion": "43.0.0" }

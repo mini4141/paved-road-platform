@@ -1,0 +1,22 @@
+{{template "head"}}
+<h1>Create service</h1>
+<p class="sub">Pick a golden-path template. The portal creates an ArgoCD Application; no YAML needed.</p>
+<div class="card">
+  {{if .Error}}<div class="error">{{.Error}}</div>{{end}}
+  <form method="post" action="/services">
+    <label for="name">Service name</label>
+    <input type="text" id="name" name="name" placeholder="orders-api" required>
+    <div class="row">
+      <div><label for="template">Template</label>
+        <select id="template" name="template"><option value="go-http">go-http (Go)</option><option value="node-http">node-http (Node 24 + TS)</option></select></div>
+      <div><label for="team">Team</label><input type="text" id="team" name="team" value="payments"></div>
+    </div>
+    <div class="row">
+      <div><label for="replicas">Replicas</label><input type="number" id="replicas" name="replicas" value="2" min="1" max="10"></div>
+      <div><label for="max_replicas">Max replicas (autoscaling)</label><input type="number" id="max_replicas" name="max_replicas" value="5" min="1" max="10"></div>
+    </div>
+    <label><input type="checkbox" name="autoscaling" checked> Enable autoscaling (HPA on CPU)</label>
+    <div class="actions"><button class="btn" type="submit">Create service</button><a class="btn ghost" href="/services">Cancel</a></div>
+  </form>
+</div>
+{{template "foot"}}

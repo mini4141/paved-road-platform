@@ -1,0 +1,17 @@
+# Copies of the base policies that deny (instead of audit) in namespaces managed by the portal.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+nameSuffix: -enforce
+patches:
+  - target: { kind: ValidatingPolicy }
+    patch: |-
+      - op: replace
+        path: /spec/validationActions
+        value: [Deny]
+      - op: replace
+        path: /spec/matchConstraints/namespaceSelector
+        value:
+          matchLabels:
+            paved-road/managed: "true"

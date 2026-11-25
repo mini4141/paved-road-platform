@@ -1,0 +1,1 @@
+{ "addon": "metrics-server", "namespace": "kube-system", "chartRepo": "https://kubernetes-sigs.github.io/metrics-server/", "chartName": "metrics-server", "chartPath": "", "chartVersion": "3.14.0" }

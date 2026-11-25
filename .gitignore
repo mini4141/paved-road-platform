@@ -1,0 +1,25 @@
+# secrets / state
+.env
+.local/
+*.pem
+*.key
+kubeconfig*
+*.kubeconfig
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+crash.log
+cdk.out/
+# build output / deps
+node_modules/
+dist/
+bin/
+*.exe
+.venv/
+coverage/
+playwright-report/
+test-results/
+portal/portal
+templates/go-http-service/go-http-service

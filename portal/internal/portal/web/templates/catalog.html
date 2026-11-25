@@ -1,0 +1,24 @@
+{{template "head"}}
+<h1>Service catalog</h1>
+<p class="sub">Services created from golden-path templates and deployed by ArgoCD.</p>
+<div class="card">
+  <p><a class="btn" href="/services/new">+ Create service</a></p>
+  <table>
+    <thead><tr><th>Name</th><th>Team</th><th>Sync</th><th>Health</th><th>Replicas</th><th>Links</th></tr></thead>
+    <tbody>
+    {{range .Services}}
+      <tr>
+        <td><a href="/services/{{.Name}}"><strong>{{.Name}}</strong></a></td>
+        <td>{{.Team}}</td>
+        <td><span class="badge {{.Sync}}">{{.Sync}}</span></td>
+        <td><span class="badge {{.Health}}">{{.Health}}</span></td>
+        <td>{{.Ready}}/{{.Desired}}</td>
+        <td><a href="{{.URL}}" target="_blank">open</a> · <a href="{{.GrafanaURL}}" target="_blank">dashboard</a></td>
+      </tr>
+    {{else}}
+      <tr><td colspan="6">No services yet. Create the first one.</td></tr>
+    {{end}}
+    </tbody>
+  </table>
+</div>
+{{template "foot"}}

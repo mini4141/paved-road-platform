@@ -1,0 +1,14 @@
+# paved.registry is injected by the ApplicationSet (empty on kind, ECR URL on EKS).
+paved:
+  registry: ""
+image:
+  repository: portal
+  tag: "0.1.0"
+  pullPolicy: IfNotPresent
+gitRepoURL: https://github.com/mini4141/paved-road-platform.git
+gitRevision: main
+argocdNamespace: argocd
+opencostURL: http://opencost.opencost.svc:9003
+resources:
+  requests: { cpu: 50m, memory: 64Mi }
+  limits: { cpu: 300m, memory: 128Mi }

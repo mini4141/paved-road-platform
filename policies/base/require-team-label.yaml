@@ -1,0 +1,23 @@
+apiVersion: policies.kyverno.io/v1
+kind: ValidatingPolicy
+metadata:
+  name: require-team-label
+  annotations:
+    policies.kyverno.io/title: Require the team label
+spec:
+  validationActions: [Audit]
+  matchConstraints:
+    resourceRules:
+      - apiGroups: [""]
+        apiVersions: [v1]
+        operations: [CREATE, UPDATE]
+        resources: [pods]
+    namespaceSelector:
+      matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: NotIn
+          values: [kube-system, kube-public, kube-node-lease, kyverno, argocd, monitoring, observability, traefik, opencost, paved-road, local-path-storage]
+  validations:
+    - message: "The label team is required."
+      expression: >-
+        has(object.metadata.labels) && 'team' in object.metadata.labels && object.metadata.labels['team'] != ''

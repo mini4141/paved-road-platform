@@ -1,0 +1,17 @@
+opencost:
+  exporter:
+    resources:
+      requests: { cpu: 20m, memory: 64Mi }
+      limits: { memory: 256Mi }
+  prometheus:
+    internal:
+      enabled: true
+      serviceName: kps-prometheus
+      namespaceName: monitoring
+      port: 9090
+  metrics:
+    serviceMonitor:
+      enabled: true
+      additionalLabels: {}
+  ui:
+    enabled: false

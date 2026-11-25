@@ -1,0 +1,10 @@
+{{template "head"}}
+<h1>{{.Name}}</h1>
+<p class="sub">Owned by team <code>{{.Team}}</code></p>
+<div id="status" hx-get="/services/{{.Name}}/status" hx-trigger="every 3s" hx-swap="innerHTML">
+  {{template "status.html" .}}
+</div>
+<div class="actions">
+  <button class="btn danger" hx-delete="/services/{{.Name}}" hx-confirm="Delete {{.Name}}?">Delete service</button>
+</div>
+{{template "foot"}}

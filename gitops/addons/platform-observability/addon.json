@@ -1,0 +1,1 @@
+{ "addon": "platform-observability", "namespace": "monitoring", "chartRepo": "https://github.com/mini4141/paved-road-platform.git", "chartName": "", "chartPath": "charts/platform-observability", "chartVersion": "main" }

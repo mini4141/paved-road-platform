@@ -1,0 +1,19 @@
+# One NLB for the whole platform, created by this Service (in-tree AWS provider).
+deployment:
+  replicas: 2
+topologySpreadConstraints:
+  - maxSkew: 1
+    topologyKey: kubernetes.io/hostname
+    whenUnsatisfiable: ScheduleAnyway
+    labelSelector:
+      matchLabels:
+        app.kubernetes.io/name: traefik
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+service:
+  spec:
+    type: LoadBalancer
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: Project=paved-road-platform,Ephemeral=true,ManagedBy=kubernetes,Owner=alvieirvansyah

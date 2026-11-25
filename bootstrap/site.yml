@@ -1,0 +1,8 @@
+# Bootstraps a cluster: installs ArgoCD and the app-of-apps root. ArgoCD installs everything else.
+- name: Bootstrap the paved-road platform
+  hosts: localhost
+  gather_facts: false
+  environment:
+    KUBECONFIG: "{{ kubeconfig }}"
+  roles:
+    - argocd

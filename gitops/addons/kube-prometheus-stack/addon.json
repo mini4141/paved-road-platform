@@ -1,0 +1,1 @@
+{ "addon": "kube-prometheus-stack", "namespace": "monitoring", "chartRepo": "https://prometheus-community.github.io/helm-charts", "chartName": "kube-prometheus-stack", "chartPath": "", "chartVersion": "93.10.1" }

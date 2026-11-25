@@ -1,0 +1,9 @@
+# kind maps localhost:8080 -> node port 30080 (see scripts/kind-config.yaml)
+deployment:
+  replicas: 1
+service:
+  spec:
+    type: NodePort
+ports:
+  web:
+    nodePort: 30080

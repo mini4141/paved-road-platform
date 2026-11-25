@@ -1,0 +1,21 @@
+# Kyverno guardrails, built with Kustomize: base is Audit, the enforce overlay denies in portal-managed namespaces.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: policies
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mini4141/paved-road-platform.git
+    targetRevision: main
+    path: policies/overlays/enforce
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kyverno
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
+    syncOptions: [SkipDryRunOnMissingResource=true]
+    retry:
+      limit: 20
+      backoff: { duration: 15s, factor: 2, maxDuration: 3m }

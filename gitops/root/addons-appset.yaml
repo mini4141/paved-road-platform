@@ -1,0 +1,76 @@
+# One Application per gitops/addons/*/addon.json, for every cluster labelled paved-road/cluster=true.
+# The cluster secret (written by Ansible) carries the env label (kind|eks) and the registry annotation.
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: addons
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - matrix:
+        generators:
+          - git:
+              repoURL: https://github.com/mini4141/paved-road-platform.git
+              revision: main
+              files:
+                - path: gitops/addons/*/addon.json
+          - clusters:
+              selector:
+                matchLabels:
+                  paved-road/cluster: "true"
+  template:
+    metadata:
+      name: 'addon-{{ .addon }}'
+      labels:
+        paved-road/addon: 'true'
+    spec:
+      project: default
+      sources:
+        - repoURL: '{{ .chartRepo }}'
+          chart: '{{ .chartName }}'
+          path: '{{ .chartPath }}'
+          targetRevision: '{{ .chartVersion }}'
+          helm:
+            releaseName: '{{ .addon }}'
+            ignoreMissingValueFiles: true
+            valueFiles:
+              - '$values/gitops/addons/{{ .addon }}/values-common.yaml'
+              - '$values/gitops/addons/{{ .addon }}/values-{{ index .metadata.labels "env" }}.yaml'
+        - repoURL: https://github.com/mini4141/paved-road-platform.git
+          targetRevision: main
+          ref: values
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ .namespace }}'
+      syncPolicy:
+        automated: { prune: true, selfHeal: true }
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
+          - SkipDryRunOnMissingResource=true
+        retry:
+          limit: 20
+          backoff: { duration: 15s, factor: 2, maxDuration: 3m }
+  # Only the portal needs the image registry (ECR URL on EKS); other charts have strict value schemas.
+  templatePatch: |
+    {{- if eq .addon "portal" }}
+    spec:
+      sources:
+        - repoURL: '{{ .chartRepo }}'
+          path: '{{ .chartPath }}'
+          targetRevision: '{{ .chartVersion }}'
+          helm:
+            releaseName: portal
+            ignoreMissingValueFiles: true
+            valueFiles:
+              - '$values/gitops/addons/portal/values-common.yaml'
+              - '$values/gitops/addons/portal/values-{{ index .metadata.labels "env" }}.yaml'
+            parameters:
+              - name: paved.registry
+                value: '{{ index .metadata.annotations "registry" }}'
+        - repoURL: https://github.com/mini4141/paved-road-platform.git
+          targetRevision: main
+          ref: values
+    {{- end }}

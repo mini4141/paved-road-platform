@@ -1,0 +1,22 @@
+<div class="card grid">
+  <div class="metric"><div class="k">Sync</div><div class="v"><span class="badge {{.Sync}}" id="sync">{{.Sync}}</span></div></div>
+  <div class="metric"><div class="k">Health</div><div class="v"><span class="badge {{.Health}}" id="health">{{.Health}}</span></div></div>
+  <div class="metric"><div class="k">Replicas ready</div><div class="v">{{.Ready}}/{{.Desired}}</div></div>
+  <div class="metric"><div class="k">Cost (OpenCost)</div><div class="v" id="cost">{{.Cost}}</div></div>
+</div>
+<div class="card"><strong>Links</strong>
+  <ul class="plain">
+    <li>Service URL: <a id="svc-url" href="{{.URL}}" target="_blank">{{.URL}}</a></li>
+    <li>Golden-signals dashboard: <a href="{{.GrafanaURL}}" target="_blank">Grafana</a></li>
+    <li>GitOps: <a href="/argocd/applications/argocd/{{.Name}}" target="_blank">ArgoCD application</a></li>
+  </ul>
+</div>
+<div class="card"><strong>Scorecard</strong>
+  <ul class="plain">{{range .Scorecard}}<li class="check {{if not .OK}}no{{end}}">{{.Name}}</li>{{end}}</ul>
+</div>
+<div class="card"><strong>Recent events</strong>
+  <table><tbody>
+  {{range .Events}}<tr><td>{{.Type}}</td><td>{{.Reason}}</td><td>{{.Message}}</td></tr>
+  {{else}}<tr><td>No events yet.</td></tr>{{end}}
+  </tbody></table>
+</div>

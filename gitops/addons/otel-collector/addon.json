@@ -1,0 +1,1 @@
+{ "addon": "otel-collector", "namespace": "observability", "chartRepo": "https://open-telemetry.github.io/opentelemetry-helm-charts", "chartName": "opentelemetry-collector", "chartPath": "", "chartVersion": "0.183.2" }

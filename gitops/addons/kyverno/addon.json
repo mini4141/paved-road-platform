@@ -1,0 +1,1 @@
+{ "addon": "kyverno", "namespace": "kyverno", "chartRepo": "https://kyverno.github.io/kyverno/", "chartName": "kyverno", "chartPath": "", "chartVersion": "3.10.0" }

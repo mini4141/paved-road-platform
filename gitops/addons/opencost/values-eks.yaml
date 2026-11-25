@@ -1,0 +1,6 @@
+# On EKS OpenCost reads AWS public on-demand/spot pricing instead of the default pricing.
+opencost:
+  customPricing:
+    enabled: false
+  exporter:
+    cloudProviderApiKey: ""
