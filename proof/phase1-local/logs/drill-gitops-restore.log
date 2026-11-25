@@ -1,0 +1,20 @@
+== chaos drill 'gitops-restore' on orders-api at 2026-11-25T08:15:55Z
+-- before
+NAME         STATUS   AGE
+orders-api   Active   15m
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+orders-api   5/5     5            5           15m
+namespace "orders-api" deleted
+-- namespace deleted at 15:16:30; waiting for ArgoCD self-heal
+-- after
+NAME         STATUS   AGE
+orders-api   Active   22s
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/orders-api   2/2     2            2           16s
+
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/orders-api-689ccb4775-99d55   1/1     Running   0          13s
+pod/orders-api-689ccb4775-nscwt   1/1     Running   0          16s
+NAME         SYNC STATUS   HEALTH STATUS
+orders-api   Synced        Healthy
+RESULT: PASS

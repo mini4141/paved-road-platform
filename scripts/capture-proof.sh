@@ -63,6 +63,8 @@ if [ "$PHASE" = phase2 ]; then
 fi
 
 log "screenshots"
+export GRAFANA_USER=admin
+GRAFANA_PASSWORD="$(kubectl -n monitoring get secret kps-grafana -o jsonpath='{.data.admin-password}' | base64 -d)"; export GRAFANA_PASSWORD
 ( cd "$ROOT/e2e" && npm ci --silent && npx playwright install chromium >/dev/null \
   && SHOTS="$DIR/screenshots" PREFIX="$PREFIX" node capture.mjs )
 log "proof captured in $DIR"

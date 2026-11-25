@@ -26,6 +26,15 @@ const names = prefix === "local"
       golden: "05-grafana-golden-signals", slo: "06-grafana-slo", loki: "07-loki-logs", tempo: "08-tempo-trace", cost: "09-cost-panel" }
   : { catalog: "01-eks-portal-catalog", healthy: "02-eks-service-healthy", argo: "03-eks-argocd-tree", golden: "04-eks-grafana", cost: "05-eks-cost" };
 
+// Explore needs an Editor/Admin; anonymous access is read-only, so sign in with the generated admin secret.
+if (process.env.GRAFANA_PASSWORD) {
+  await page.goto(`${base}/grafana/login`);
+  await page.fill('input[name="user"]', process.env.GRAFANA_USER ?? "admin");
+  await page.fill('input[name="password"]', process.env.GRAFANA_PASSWORD);
+  await page.getByRole("button", { name: /log in/i }).click();
+  await page.waitForURL(/\/grafana\/(\?.*)?$/);
+}
+
 // Portal
 await page.goto(`${base}/`);
 await page.locator(`text=${svc}`).first().waitFor();

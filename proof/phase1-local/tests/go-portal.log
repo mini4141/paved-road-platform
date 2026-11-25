@@ -1,0 +1,15 @@
+?   	github.com/paved-road/portal/cmd/portal	[no test files]
+=== RUN   TestCreateServiceBuildsApplication
+--- PASS: TestCreateServiceBuildsApplication (0.01s)
+=== RUN   TestCreateServiceRejectsBadName
+--- PASS: TestCreateServiceRejectsBadName (0.00s)
+=== RUN   TestCatalogListsServices
+--- PASS: TestCatalogListsServices (0.03s)
+=== RUN   TestNewFormAndHealthz
+--- PASS: TestNewFormAndHealthz (0.00s)
+=== RUN   TestDetailAndStatusPartial
+--- PASS: TestDetailAndStatusPartial (0.03s)
+=== RUN   TestDeleteService
+--- PASS: TestDeleteService (0.00s)
+PASS
+ok  	github.com/paved-road/portal/internal/portal	0.643s

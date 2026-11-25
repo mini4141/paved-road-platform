@@ -1,0 +1,30 @@
+== chaos drill 'node-drain' on orders-api at 2026-11-25T08:17:20Z
+-- before
+NAME                          READY   STATUS    RESTARTS   AGE   IP            NODE                 NOMINATED NODE   READINESS GATES
+orders-api-689ccb4775-99d55   1/1     Running   0          31s   10.244.1.22   paved-road-worker2   <none>           <none>
+orders-api-689ccb4775-nscwt   1/1     Running   0          34s   10.244.3.29   paved-road-worker    <none>           <none>
+NAME         MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+orders-api   1               N/A               1                     41s
+-- draining paved-road-worker2 (PDB must keep >= 1 pod available)
+evicting pod monitoring/alertmanager-kps-alertmanager-0
+evicting pod observability/otel-collector-7f9b894f7d-h58jz
+I1125 15:17:27.128116   15004 request.go:752] "Waited before sending request" delay="1.1157418s" reason="client-side throttling, not priority and fairness" verb="GET" URL="https://127.0.0.1:51390/api/v1/namespaces/monitoring/pods/kps-grafana-57758dffd-wbzwz"
+pod/opencost-7c4ddf5b67-dnxmv evicted
+pod/prometheus-kps-prometheus-0 evicted
+pod/tempo-0 evicted
+pod/alertmanager-kps-alertmanager-0 evicted
+pod/argocd-repo-server-57784d675c-4j6fn evicted
+pod/kps-grafana-57758dffd-wbzwz evicted
+pod/otel-collector-7f9b894f7d-h58jz evicted
+pod/legacy-app evicted
+pod/argocd-redis-7967f66758-pd6hx evicted
+pod/metrics-server-59f6d49485-kr72b evicted
+pod/orders-api-689ccb4775-99d55 evicted
+node/paved-road-worker2 drained
+node/paved-road-worker2 uncordoned
+-- availability probe: 15/15 OK responses during drain
+-- after
+NAME                          READY   STATUS    RESTARTS   AGE   IP            NODE                NOMINATED NODE   READINESS GATES
+orders-api-689ccb4775-8wcfk   1/1     Running   0          24s   10.244.3.36   paved-road-worker   <none>           <none>
+orders-api-689ccb4775-nscwt   1/1     Running   0          62s   10.244.3.29   paved-road-worker   <none>           <none>
+RESULT: PASS

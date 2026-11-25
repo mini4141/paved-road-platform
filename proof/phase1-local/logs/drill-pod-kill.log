@@ -1,28 +1,23 @@
-== chaos drill 'pod-kill' on orders-api at 2026-11-25T08:06:59Z
-NAME                          READY   STATUS    RESTARTS   AGE     IP            NODE                 NOMINATED NODE   READINESS GATES
-orders-api-689ccb4775-jhm54   1/1     Running   0          4m34s   10.244.3.23   paved-road-worker    <none>           <none>
-orders-api-689ccb4775-jpzrw   1/1     Running   0          6m20s   10.244.1.16   paved-road-worker2   <none>           <none>
-orders-api-689ccb4775-pp85z   1/1     Running   0          4m34s   10.244.1.17   paved-road-worker2   <none>           <none>
-orders-api-689ccb4775-r8m6n   1/1     Running   0          4m34s   10.244.1.18   paved-road-worker2   <none>           <none>
-orders-api-689ccb4775-tqmnh   1/1     Running   0          6m20s   10.244.3.22   paved-road-worker    <none>           <none>
--- killing pod orders-api-689ccb4775-jhm54 under load
-pod "orders-api-689ccb4775-jhm54" deleted from orders-api namespace
+== chaos drill 'pod-kill' on orders-api at 2026-11-25T08:14:53Z
+NAME                         READY   STATUS    RESTARTS   AGE   IP            NODE                NOMINATED NODE   READINESS GATES
+orders-api-9586bfb48-mmr4x   1/1     Running   0          29s   10.244.3.25   paved-road-worker   <none>           <none>
+orders-api-9586bfb48-r8c9c   1/1     Running   0          25s   10.244.3.26   paved-road-worker   <none>           <none>
+-- killing pod orders-api-9586bfb48-mmr4x under load
+pod "orders-api-9586bfb48-mmr4x" deleted from orders-api namespace
 -- k6 summary
   █ THRESHOLDS 
     http_req_duration
-    ✓ 'p(95)<500' p(95)=79.19ms
+    ✓ 'p(95)<500' p(95)=86.09ms
     http_req_failed
-    ✗ 'rate<0.01' rate=1.48%
-    ✗ status is 200
-      ↳  98% — ✓ 3392 / ✗ 51
-    http_req_duration..............: avg=64.63ms min=2.01ms med=20.52ms max=30.02s   p(90)=61.33ms p(95)=79.19ms
-    http_req_failed................: 1.48%  51 out of 3443
-    http_reqs......................: 3443   76.442558/s
-time="2026-11-25T15:07:49+07:00" level=error msg="thresholds on metrics 'http_req_failed' have been crossed"
-NAME                          READY   STATUS    RESTARTS   AGE     IP            NODE                 NOMINATED NODE   READINESS GATES
-orders-api-689ccb4775-jpzrw   1/1     Running   0          7m11s   10.244.1.16   paved-road-worker2   <none>           <none>
-orders-api-689ccb4775-mlm4v   1/1     Running   0          38s     10.244.3.24   paved-road-worker    <none>           <none>
-orders-api-689ccb4775-pp85z   1/1     Running   0          5m25s   10.244.1.17   paved-road-worker2   <none>           <none>
-orders-api-689ccb4775-r8m6n   1/1     Running   0          5m25s   10.244.1.18   paved-road-worker2   <none>           <none>
-orders-api-689ccb4775-tqmnh   1/1     Running   0          7m11s   10.244.3.22   paved-road-worker    <none>           <none>
-RESULT: FAIL
+    ✓ 'rate<0.01' rate=0.00%
+    ✓ status is 200
+    http_req_duration..............: avg=38.45ms min=7.46ms med=32.63ms max=267.69ms p(90)=69.61ms p(95)=86.09ms
+    http_req_failed................: 0.00%  0 out of 5771
+    http_reqs......................: 5771   128.046775/s
+NAME                         READY   STATUS    RESTARTS   AGE   IP            NODE                 NOMINATED NODE   READINESS GATES
+orders-api-9586bfb48-4tvrc   1/1     Running   0          21s   10.244.1.21   paved-road-worker2   <none>           <none>
+orders-api-9586bfb48-bt7sk   1/1     Running   0          6s    10.244.3.28   paved-road-worker    <none>           <none>
+orders-api-9586bfb48-r8c9c   1/1     Running   0          75s   10.244.3.26   paved-road-worker    <none>           <none>
+orders-api-9586bfb48-ttlbg   1/1     Running   0          38s   10.244.1.20   paved-road-worker2   <none>           <none>
+orders-api-9586bfb48-vvlw7   1/1     Running   0          21s   10.244.3.27   paved-road-worker    <none>           <none>
+RESULT: PASS

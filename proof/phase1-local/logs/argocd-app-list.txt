@@ -1,0 +1,15 @@
+NAME                           SYNC STATUS   HEALTH STATUS   REVISION                                   PROJECT
+addon-alloy                    Synced        Healthy                                                    default
+addon-kube-prometheus-stack    Synced        Healthy                                                    default
+addon-kyverno                  Synced        Healthy                                                    default
+addon-loki                     Synced        Healthy                                                    default
+addon-metrics-server           Synced        Healthy                                                    default
+addon-opencost                 Synced        Healthy                                                    default
+addon-otel-collector           Synced        Healthy                                                    default
+addon-platform-observability   Synced        Healthy                                                    default
+addon-portal                   Synced        Healthy                                                    default
+addon-tempo                    Synced        Healthy                                                    default
+addon-traefik                  Synced        Healthy                                                    default
+orders-api                     Synced        Healthy         666ea7d4fd5f3c71c8facff56807cc29f53c7bbc   default
+policies                       Synced        Healthy         666ea7d4fd5f3c71c8facff56807cc29f53c7bbc   default
+root                           Synced        Healthy         666ea7d4fd5f3c71c8facff56807cc29f53c7bbc   default
