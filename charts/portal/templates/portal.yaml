@@ -40,7 +40,7 @@ spec:
     matchLabels: { app.kubernetes.io/name: portal }
   template:
     metadata:
-      labels: {{- include "portal.labels" . | nindent 4 }}
+      labels: {{- include "portal.labels" . | nindent 8 }}
     spec:
       serviceAccountName: portal
       containers:
