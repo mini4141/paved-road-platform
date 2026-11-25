@@ -16,5 +16,5 @@ variable "cluster_name" {
 variable "kubernetes_version" {
   description = "Latest EKS version supported at deploy time (see docs/DECISIONS.md)."
   type        = string
-  default     = "1.34"
+  default     = "1.37"
 }
