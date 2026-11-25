@@ -1,6 +1,6 @@
 NAME                           SYNC STATUS   HEALTH STATUS   REVISION                                   PROJECT
 addon-alloy                    Synced        Healthy                                                    default
-addon-kube-prometheus-stack    Synced        Progressing                                                default
+addon-kube-prometheus-stack    OutOfSync     Healthy                                                    default
 addon-kyverno                  Synced        Healthy                                                    default
 addon-loki                     Synced        Healthy                                                    default
 addon-metrics-server           Synced        Healthy                                                    default
@@ -10,6 +10,6 @@ addon-platform-observability   Synced        Healthy                            
 addon-portal                   Synced        Healthy                                                    default
 addon-tempo                    Synced        Healthy                                                    default
 addon-traefik                  Synced        Healthy                                                    default
-orders-api                     Synced        Healthy         407c0517ee30af513b5797feb2d430b38138055d   default
-policies                       Synced        Healthy         407c0517ee30af513b5797feb2d430b38138055d   default
-root                           Synced        Healthy         fde7c803cb830b92e0b14f4bc26315a56c3da5ab   default
+orders-api                     Synced        Healthy         6dcb7afafd5407f72d1d5fba05251e76ada4fe03   default
+policies                       Synced        Healthy         6dcb7afafd5407f72d1d5fba05251e76ada4fe03   default
+root                           Synced        Healthy         6dcb7afafd5407f72d1d5fba05251e76ada4fe03   default
