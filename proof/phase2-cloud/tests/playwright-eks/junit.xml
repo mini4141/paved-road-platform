@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="18.934254999999997">
+<testsuite name="portal.spec.ts" timestamp="2026-11-25T16:56:40.447Z" hostname="" tests="1" failures="0" skipped="0" time="15.849" errors="0">
+<testcase name="create service becomes Healthy and is reachable" classname="portal.spec.ts" time="15.849">
+</testcase>
+</testsuite>
+</testsuites>

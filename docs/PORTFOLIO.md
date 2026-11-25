@@ -68,7 +68,7 @@ Key design choices:
 | IaC | Terraform >= 1.9 modules `network`, `eks`, `ecr`; tflint; `fmt`/`validate` | `infra/` | `terraform.log`, `terraform-apply.log` |
 | Cluster bootstrap | Ansible playbook with the `kubernetes.core` collection | `bootstrap/` | `ansible-bootstrap.log` |
 | GitOps | ArgoCD app-of-apps, ApplicationSet, Applications created by the portal | `gitops/` | `04-argocd-tree.png`, `argocd-app-list.txt` |
-| Ingress | Traefik (official chart), path routing on one load balancer | `gitops/addons/traefik/` | NLB in `resources.txt` |
+| Ingress | Traefik (official chart), path routing; NLB on EKS (blocked by an account restriction, see below) | `gitops/addons/traefik/` | `01`-`03` EKS screenshots via port-forward |
 | Observability | kube-prometheus-stack, Loki + Alloy, Tempo, OpenTelemetry Collector, dashboards as code | `gitops/addons/`, `charts/platform-observability/` | `05`-`08` Grafana screenshots |
 | Guardrails | Kyverno: requests/limits, team label, no `latest` tag | `policies/` | `kyverno.log`, `kyverno-deny.log` |
 | FinOps | OpenCost in the portal and Grafana; spot nodes; right-sized requests | `gitops/addons/opencost/` | `09-cost-panel.png`, `05-eks-cost.png` |
@@ -91,11 +91,29 @@ On EKS: ![EKS portal](../proof/phase2-cloud/screenshots/01-eks-portal-catalog.pn
 
 ## What was hard
 
-Filled in from the real run: see the section below.
+- **Kyverno 1.20 removed legacy policies.** `ClusterPolicy` objects are no longer accepted, so the guardrails are CEL
+  `ValidatingPolicy` objects. Audit-everywhere plus enforce-in-managed-namespaces is done with two Kustomize layers,
+  because the new API has no per-namespace action override.
+- **Strict chart schemas.** Traefik 43 rejects unknown values, so the portal-only `paved.registry` parameter is
+  injected with an ApplicationSet `templatePatch` instead of for every add-on.
+- **Sync deadlocks on a small control plane.** A kind control plane saturated by ~13 add-ons restarted its scheduler
+  and controller manager during the first sync; stuck sync operations had to be cleared and re-run.
+- **Pod-kill was not free at first.** The first drill showed 1.5% errors because requests still reached a terminating
+  pod. A 5 s shutdown delay plus a Traefik retry middleware brought it to 0%.
+- **Random Grafana admin passwords** regenerate on every Argo sync and lock the admin out; the bootstrap now creates
+  the Secret once.
+- **The AWS account cannot create load balancers** (`OperationNotPermitted`), so the Traefik Service never got its
+  NLB. The EKS tests, drills and screenshots went through `kubectl port-forward` to Traefik. The manifests are
+  unchanged, so the NLB path works as soon as the account restriction is lifted.
+- **Windows tooling friction.** Docker Desktop stopped mid-deploy once, Git Bash rewrites path arguments for native
+  `.exe` files, and a stale kubeconfig from a destroyed cluster pointed at a dead endpoint; each fix is in the scripts.
 
 ## Approximate AWS cost
 
-Filled in after the destroy step.
+Two EKS runs (the first was aborted and destroyed), about 1.7 cluster-hours in total in `ap-southeast-2`:
+EKS control plane at $0.10/h, 2x `t3.large` SPOT nodes at roughly $0.07/h combined, no NAT gateway, no load balancer
+(the account could not create one), no volumes, ECR and CloudWatch negligible. Estimated total: **under $1**.
+Everything was destroyed and `proof/phase3-destroy/verify-destroyed.txt` confirms nothing billable remains.
 
 ## How to reproduce
 

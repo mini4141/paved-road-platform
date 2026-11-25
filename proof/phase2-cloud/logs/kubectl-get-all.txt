@@ -1,0 +1,131 @@
+NAMESPACE       NAME                                                            READY   STATUS      RESTARTS        AGE
+argocd          pod/argocd-application-controller-0                             1/1     Running     0               26m
+argocd          pod/argocd-applicationset-controller-549c6cc9d7-56czc           1/1     Running     0               4m3s
+argocd          pod/argocd-redis-7967f66758-nkrsf                               1/1     Running     0               4m3s
+argocd          pod/argocd-repo-server-57784d675c-z7j96                         1/1     Running     0               4m2s
+argocd          pod/argocd-server-6966c85f95-8klbx                              1/1     Running     0               4m3s
+kube-system     pod/aws-node-pw9l7                                              2/2     Running     0               54m
+kube-system     pod/aws-node-st8vt                                              2/2     Running     0               54m
+kube-system     pod/coredns-64fc9b79f5-crvg7                                    1/1     Running     0               56m
+kube-system     pod/coredns-64fc9b79f5-z7xls                                    1/1     Running     0               56m
+kube-system     pod/eks-pod-identity-agent-gpqcm                                1/1     Running     0               53m
+kube-system     pod/eks-pod-identity-agent-wnm68                                1/1     Running     0               53m
+kube-system     pod/kube-proxy-mllrl                                            1/1     Running     0               54m
+kube-system     pod/kube-proxy-vkjl8                                            1/1     Running     0               54m
+kube-system     pod/metrics-server-6f6bc8954-cxh9t                              1/1     Running     0               4m3s
+kyverno         pod/kyverno-admission-controller-5785fcc586-rdfcs               1/1     Running     0               4m2s
+kyverno         pod/kyverno-background-controller-bd5958b7c-kq7xg               1/1     Running     0               22m
+kyverno         pod/kyverno-migrate-resources-lx2q7                             0/1     Completed   0               21m
+kyverno         pod/kyverno-reports-controller-7f794b47b8-x84j2                 1/1     Running     0               22m
+monitoring      pod/alertmanager-kps-alertmanager-0                             2/2     Running     0               4m1s
+monitoring      pod/kps-grafana-67bfdb49d4-5xxtq                                3/3     Running     0               23m
+monitoring      pod/kps-operator-5c55d7df7b-q4vkk                               1/1     Running     0               23m
+monitoring      pod/kube-prometheus-stack-kube-state-metrics-848b86b48c-whqcr   1/1     Running     0               4m2s
+monitoring      pod/kube-prometheus-stack-prometheus-node-exporter-j6wpf        1/1     Running     0               23m
+monitoring      pod/kube-prometheus-stack-prometheus-node-exporter-z5kkw        1/1     Running     0               23m
+monitoring      pod/prometheus-kps-prometheus-0                                 2/2     Running     0               4m
+observability   pod/alloy-6954747c4f-4glv8                                      2/2     Running     0               23m
+observability   pod/loki-0                                                      1/1     Running     0               23m
+observability   pod/otel-collector-7f9b894f7d-xwfr4                             1/1     Running     0               4m3s
+observability   pod/tempo-0                                                     1/1     Running     0               4m
+opencost        pod/opencost-7c4ddf5b67-rpxlh                                   1/1     Running     2 (3m15s ago)   4m2s
+orders-api      pod/orders-api-5645b5bc9-bmwrv                                  1/1     Running     0               68s
+orders-api      pod/orders-api-5645b5bc9-p4sgn                                  1/1     Running     0               108s
+paved-road      pod/portal-64d49c99d-jpgkm                                      1/1     Running     0               4m3s
+sandbox         pod/legacy-app                                                  1/1     Running     0               13m
+traefik         pod/traefik-6cf4559d59-6t5jc                                    1/1     Running     0               4m2s
+traefik         pod/traefik-6cf4559d59-6vgfz                                    1/1     Running     0               24m
+
+NAMESPACE       NAME                                                     TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                                                                                                   AGE
+argocd          service/argocd-application-controller                    ClusterIP      None             <none>        <none>                                                                                                    26m
+argocd          service/argocd-applicationset-controller                 ClusterIP      172.20.105.11    <none>        7000/TCP                                                                                                  26m
+argocd          service/argocd-redis                                     ClusterIP      172.20.156.111   <none>        6379/TCP                                                                                                  26m
+argocd          service/argocd-repo-server                               ClusterIP      172.20.216.24    <none>        8081/TCP                                                                                                  26m
+argocd          service/argocd-server                                    ClusterIP      172.20.194.146   <none>        80/TCP,443/TCP                                                                                            26m
+default         service/kubernetes                                       ClusterIP      172.20.0.1       <none>        443/TCP                                                                                                   57m
+kube-system     service/eks-extension-metrics-api                        ClusterIP      172.20.38.160    <none>        443/TCP                                                                                                   57m
+kube-system     service/kps-coredns                                      ClusterIP      None             <none>        9153/TCP                                                                                                  23m
+kube-system     service/kps-kubelet                                      ClusterIP      None             <none>        10250/TCP,4194/TCP,10255/TCP                                                                              23m
+kube-system     service/kube-dns                                         ClusterIP      172.20.0.10      <none>        53/UDP,53/TCP,9153/TCP                                                                                    56m
+kube-system     service/metrics-server                                   ClusterIP      172.20.16.148    <none>        443/TCP                                                                                                   25m
+kyverno         service/kyverno-background-controller-metrics            ClusterIP      172.20.11.191    <none>        8000/TCP                                                                                                  22m
+kyverno         service/kyverno-reports-controller-metrics               ClusterIP      172.20.35.8      <none>        8000/TCP                                                                                                  22m
+kyverno         service/kyverno-svc                                      ClusterIP      172.20.36.36     <none>        443/TCP                                                                                                   22m
+kyverno         service/kyverno-svc-metrics                              ClusterIP      172.20.194.137   <none>        8000/TCP                                                                                                  22m
+monitoring      service/alertmanager-operated                            ClusterIP      None             <none>        9093/TCP,9094/TCP,9094/UDP                                                                                23m
+monitoring      service/kps-alertmanager                                 ClusterIP      172.20.62.174    <none>        9093/TCP,8080/TCP                                                                                         23m
+monitoring      service/kps-grafana                                      ClusterIP      172.20.154.244   <none>        80/TCP                                                                                                    23m
+monitoring      service/kps-operator                                     ClusterIP      172.20.157.11    <none>        8080/TCP                                                                                                  23m
+monitoring      service/kps-prometheus                                   ClusterIP      172.20.235.213   <none>        9090/TCP,8080/TCP                                                                                         23m
+monitoring      service/kube-prometheus-stack-kube-state-metrics         ClusterIP      172.20.186.150   <none>        8080/TCP                                                                                                  23m
+monitoring      service/kube-prometheus-stack-prometheus-node-exporter   ClusterIP      172.20.164.245   <none>        9100/TCP                                                                                                  23m
+monitoring      service/prometheus-operated                              ClusterIP      None             <none>        9090/TCP                                                                                                  23m
+observability   service/alloy                                            ClusterIP      172.20.19.245    <none>        12345/TCP                                                                                                 23m
+observability   service/loki                                             ClusterIP      172.20.96.247    <none>        3100/TCP,9095/TCP                                                                                         23m
+observability   service/loki-headless                                    ClusterIP      None             <none>        3100/TCP                                                                                                  23m
+observability   service/loki-memberlist                                  ClusterIP      None             <none>        7946/TCP                                                                                                  23m
+observability   service/otel-collector                                   ClusterIP      172.20.97.95     <none>        4317/TCP,4318/TCP                                                                                         23m
+observability   service/tempo                                            ClusterIP      172.20.145.225   <none>        6831/UDP,6832/UDP,3200/TCP,14268/TCP,14250/TCP,9411/TCP,55680/TCP,55681/TCP,4317/TCP,4318/TCP,55678/TCP   24m
+opencost        service/opencost                                         ClusterIP      172.20.89.88     <none>        9003/TCP,8081/TCP                                                                                         25m
+orders-api      service/orders-api                                       ClusterIP      172.20.153.187   <none>        80/TCP                                                                                                    13m
+paved-road      service/portal                                           ClusterIP      172.20.122.151   <none>        80/TCP                                                                                                    25m
+traefik         service/traefik                                          LoadBalancer   172.20.149.14    <pending>     80:32546/TCP                                                                                              24m
+
+NAMESPACE     NAME                                                            DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+kube-system   daemonset.apps/aws-node                                         2         2         2       2            2           <none>                   56m
+kube-system   daemonset.apps/eks-pod-identity-agent                           2         2         2       2            2           <none>                   53m
+kube-system   daemonset.apps/kube-proxy                                       2         2         2       2            2           <none>                   56m
+monitoring    daemonset.apps/kube-prometheus-stack-prometheus-node-exporter   2         2         2       2            2           kubernetes.io/os=linux   23m
+
+NAMESPACE       NAME                                                       READY   UP-TO-DATE   AVAILABLE   AGE
+argocd          deployment.apps/argocd-applicationset-controller           1/1     1            1           26m
+argocd          deployment.apps/argocd-redis                               1/1     1            1           26m
+argocd          deployment.apps/argocd-repo-server                         1/1     1            1           26m
+argocd          deployment.apps/argocd-server                              1/1     1            1           26m
+kube-system     deployment.apps/coredns                                    2/2     2            2           56m
+kube-system     deployment.apps/metrics-server                             1/1     1            1           25m
+kyverno         deployment.apps/kyverno-admission-controller               1/1     1            1           22m
+kyverno         deployment.apps/kyverno-background-controller              1/1     1            1           22m
+kyverno         deployment.apps/kyverno-reports-controller                 1/1     1            1           22m
+monitoring      deployment.apps/kps-grafana                                1/1     1            1           23m
+monitoring      deployment.apps/kps-operator                               1/1     1            1           23m
+monitoring      deployment.apps/kube-prometheus-stack-kube-state-metrics   1/1     1            1           23m
+observability   deployment.apps/alloy                                      1/1     1            1           23m
+observability   deployment.apps/otel-collector                             1/1     1            1           23m
+opencost        deployment.apps/opencost                                   1/1     1            1           25m
+orders-api      deployment.apps/orders-api                                 2/2     2            2           13m
+paved-road      deployment.apps/portal                                     1/1     1            1           25m
+traefik         deployment.apps/traefik                                    2/2     2            2           24m
+
+NAMESPACE       NAME                                                                  DESIRED   CURRENT   READY   AGE
+argocd          replicaset.apps/argocd-applicationset-controller-549c6cc9d7           1         1         1       26m
+argocd          replicaset.apps/argocd-redis-7967f66758                               1         1         1       26m
+argocd          replicaset.apps/argocd-repo-server-57784d675c                         1         1         1       26m
+argocd          replicaset.apps/argocd-server-6966c85f95                              1         1         1       26m
+kube-system     replicaset.apps/coredns-64fc9b79f5                                    2         2         2       56m
+kube-system     replicaset.apps/metrics-server-6f6bc8954                              1         1         1       25m
+kyverno         replicaset.apps/kyverno-admission-controller-5785fcc586               1         1         1       22m
+kyverno         replicaset.apps/kyverno-background-controller-bd5958b7c               1         1         1       22m
+kyverno         replicaset.apps/kyverno-reports-controller-7f794b47b8                 1         1         1       22m
+monitoring      replicaset.apps/kps-grafana-67bfdb49d4                                1         1         1       23m
+monitoring      replicaset.apps/kps-operator-5c55d7df7b                               1         1         1       23m
+monitoring      replicaset.apps/kube-prometheus-stack-kube-state-metrics-848b86b48c   1         1         1       23m
+observability   replicaset.apps/alloy-6954747c4f                                      1         1         1       23m
+observability   replicaset.apps/otel-collector-7f9b894f7d                             1         1         1       23m
+opencost        replicaset.apps/opencost-7c4ddf5b67                                   1         1         1       25m
+orders-api      replicaset.apps/orders-api-5645b5bc9                                  2         2         2       13m
+paved-road      replicaset.apps/portal-64d49c99d                                      1         1         1       25m
+traefik         replicaset.apps/traefik-6cf4559d59                                    2         2         2       24m
+
+NAMESPACE       NAME                                             READY   AGE
+argocd          statefulset.apps/argocd-application-controller   1/1     26m
+monitoring      statefulset.apps/alertmanager-kps-alertmanager   1/1     23m
+monitoring      statefulset.apps/prometheus-kps-prometheus       1/1     23m
+observability   statefulset.apps/loki                            1/1     23m
+observability   statefulset.apps/tempo                           1/1     24m
+
+NAMESPACE    NAME                                             REFERENCE               TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+orders-api   horizontalpodautoscaler.autoscaling/orders-api   Deployment/orders-api   cpu: 5%/50%   2         5         2          13m
+
+NAMESPACE   NAME                                  STATUS     COMPLETIONS   DURATION   AGE
+kyverno     job.batch/kyverno-migrate-resources   Complete   1/1           17s        21m

@@ -5,19 +5,19 @@ Resume from the first unticked item. Phases: 0 scaffold → 1 local → 2 AWS �
 ## Phase status
 - [x] Phase 0 scaffold
 - [x] Phase 1 local
-- [ ] Phase 2 AWS showcase
-- [ ] Phase 3 destroy
-- [ ] Phase 4 write-up
+- [x] Phase 2 AWS showcase
+- [x] Phase 3 destroy
+- [x] Phase 4 write-up
 
 ## Coverage matrix (SPECS §2 / CLAUDE §2)
 - [x] Self-service developer platform: F1 portal + F2 golden templates
-- [ ] Kubernetes + cloud + FinOps: Terraform EKS spot, HPA, OpenCost
+- [x] Kubernetes + cloud + FinOps: Terraform EKS spot, HPA, OpenCost
 - [x] CI/CD, GitOps, reusable templates: reusable GH Actions workflows, ArgoCD app-of-apps/ApplicationSet
 - [x] Fault tolerance / DR / scaling: chaos drills, gitops-restore, PDB + topology spread
 - [x] Observability: Prometheus, Alertmanager, Grafana, Loki + Alloy, Tempo, OTel Collector
-- [ ] IaC: Terraform modules (network, eks, ecr) + tflint + Ansible bootstrap (kubernetes.core)
+- [x] IaC: Terraform modules (network, eks, ecr) + tflint + Ansible bootstrap (kubernetes.core)
 - [x] Measure what matters / gradual change: SLO dashboard, Kyverno Audit→Enforce
-- [ ] Stack: kind, EKS, Helm 3, Kustomize, metrics-server, HPA, PDB, topology spread
+- [x] Stack: kind, EKS, Helm 3, Kustomize, metrics-server, HPA, PDB, topology spread
 - [x] Stack: Traefik single LB, path routing
 - [x] Stack: Kyverno (requests/limits, labels, no latest)
 - [x] Stack: OpenCost in portal
@@ -42,17 +42,19 @@ Resume from the first unticked item. Phases: 0 scaffold → 1 local → 2 AWS �
 - [x] scripts/test-all.sh green; CI green on main; proof/README.md complete
 
 ## Phase 2 proof (SPECS §10)
-- [ ] AWS identity check (aws sts get-caller-identity)
-- [ ] logs/terraform-apply.log (redacted), resources.txt
-- [ ] screenshots 01-eks-portal-catalog, 02-eks-service-healthy, 03-eks-argocd-tree, 04-eks-grafana, 05-eks-cost
-- [ ] logs/drill-node-drain.log, logs/drill-hpa.log
-- [ ] tests/playwright-eks/
+- [x] AWS identity check (aws sts get-caller-identity)
+- [x] logs/terraform-apply.log (redacted), resources.txt
+- [x] screenshots 01-eks-portal-catalog, 02-eks-service-healthy, 03-eks-argocd-tree, 04-eks-grafana, 05-eks-cost
+- [x] logs/drill-node-drain.log, logs/drill-hpa.log
+- [x] tests/playwright-eks/
 
 ## Phase 3 proof (SPECS §11)
-- [ ] scripts/destroy.sh completed
-- [ ] proof/phase3-destroy/verify-destroyed.txt shows nothing billable
+- [x] scripts/destroy.sh completed
+- [x] proof/phase3-destroy/verify-destroyed.txt shows nothing billable
 
 ## Phase 4
-- [ ] docs/PORTFOLIO.md, README.md, everything pushed
+- [x] docs/PORTFOLIO.md, README.md, everything pushed
 
 ## Notes / blockers
+- The AWS account cannot create load balancers (OperationNotPermitted): the NLB was never created and EKS proof used kubectl port-forward to Traefik. See docs/DECISIONS.md.
+- EKS-side CloudWatch metric image not captured; resources.txt holds the describe output instead.

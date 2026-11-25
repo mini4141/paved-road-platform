@@ -1,0 +1,19 @@
+== policies
+NAME                              AGE   READY
+disallow-latest-tag               21m   true
+disallow-latest-tag-enforce       21m   true
+require-requests-limits           21m   true
+require-requests-limits-enforce   21m   true
+require-team-label                21m   true
+require-team-label-enforce        21m   true
+
+== kubectl apply -f policies/tests/bad-deployment.yaml (namespace guardrail-demo is portal-managed: Enforce)
+Error from server: error when creating "C:/Users/ThinkPad/Pictures/mmvie-v2/reqs/3-paved-road-platform/policies/tests/bad-deployment.yaml": admission webhook "vpol.validate.kyverno.svc-fail-f6fbf32c" denied the request: Policy require-team-label-enforce failed: The label team is required.; Policy disallow-latest-tag-enforce failed: An explicit image tag other than latest is required.; Policy require-requests-limits-enforce failed: CPU/memory requests and a memory limit are required on every container.
+RESULT: DENIED (expected)
+
+== audit reports for namespace sandbox (unmanaged, Audit mode)
+NAME                                   KIND   NAME         PASS   FAIL   WARN   ERROR   SKIP   AGE
+14d0175c-9a34-4952-8dff-<ACCOUNT_ID>   Pod    legacy-app   0      3      0      0       0      13m
+disallow-latest-tag	fail	An explicit image tag other than latest is required.
+require-requests-limits	fail	CPU/memory requests and a memory limit are required on every container.
+require-team-label	fail	The label team is required.

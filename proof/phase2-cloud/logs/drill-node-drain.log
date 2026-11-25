@@ -1,0 +1,20 @@
+== chaos drill 'node-drain' on orders-api at 2026-11-25T17:04:31Z
+-- before
+NAME                         READY   STATUS    RESTARTS   AGE     IP             NODE                                             NOMINATED NODE   READINESS GATES
+orders-api-5645b5bc9-95xg4   1/1     Running   0          6m52s   10.20.12.45    ip-10-20-9-242.ap-southeast-2.compute.internal   <none>           <none>
+orders-api-5645b5bc9-zf96z   1/1     Running   0          72s     10.20.27.163   ip-10-20-17-87.ap-southeast-2.compute.internal   <none>           <none>
+NAME         MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+orders-api   1               N/A               1                     11m
+-- draining ip-10-20-17-87.ap-southeast-2.compute.internal (PDB must keep >= 1 pod available)
+node/ip-10-20-17-87.ap-southeast-2.compute.internal cordoned
+Warning: ignoring DaemonSet-managed Pods: kube-system/aws-node-pw9l7, kube-system/eks-pod-identity-agent-wnm68, kube-system/kube-proxy-mllrl, monitoring/kube-prometheus-stack-prometheus-node-exporter-z5kkw
+evicting pod orders-api/orders-api-5645b5bc9-zf96z
+pod/orders-api-5645b5bc9-zf96z evicted
+node/ip-10-20-17-87.ap-southeast-2.compute.internal drained
+node/ip-10-20-17-87.ap-southeast-2.compute.internal uncordoned
+-- availability probe: 7/7 OK responses during drain
+-- after
+NAME                         READY   STATUS    RESTARTS   AGE     IP            NODE                                             NOMINATED NODE   READINESS GATES
+orders-api-5645b5bc9-95xg4   1/1     Running   0          7m18s   10.20.12.45   ip-10-20-9-242.ap-southeast-2.compute.internal   <none>           <none>
+orders-api-5645b5bc9-p4sgn   1/1     Running   0          16s     10.20.2.64    ip-10-20-9-242.ap-southeast-2.compute.internal   <none>           <none>
+RESULT: PASS

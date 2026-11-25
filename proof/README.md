@@ -34,9 +34,15 @@ logs and test reports are produced by the scripts named in the repository README
 - `k6-smoke.log`: k6 smoke: p95 < 500 ms and errors < 1%.
 - `playwright/junit.xml`, `playwright/html/`: Playwright golden path: create a service, wait for Healthy, open its URL.
 
-## Phase 2: cloud (EKS)
-Not captured. `terraform apply` succeeded (EKS 1.37, 21 resources; see `phase3-destroy/terraform-destroy.log` for the matching teardown), but the deploy was aborted before the bootstrap when Docker Desktop's engine stopped, and the stack was destroyed on request.
+## Phase 2: cloud (EKS 1.37, 2x t3.large SPOT)
+The AWS account refuses to create load balancers (`OperationNotPermitted: This AWS account currently does not support creating load balancers`, seen in the Traefik Service events), so no NLB exists. Tests, drills and screenshots ran through `kubectl port-forward` to the Traefik pods instead; everything else is the real EKS deployment.
+- `phase2-cloud/resources.txt`: deployed AWS resources (terraform outputs, EKS, SPOT node group, VPC, ECR, log group, IAM/OIDC).
+- `phase2-cloud/logs/terraform-apply.log`, `ansible-bootstrap.log`, `argocd-app-list.txt`, `kubectl-get-all.txt`, `kyverno-deny.log`.
+- `phase2-cloud/logs/drill-hpa.log` (2 to 5 replicas), `drill-node-drain.log`, `drill-pod-kill.log`: all PASS on EKS.
+- `phase2-cloud/screenshots/`: `01-eks-portal-catalog`, `02-eks-service-healthy`, `03-eks-argocd-tree`, `04-eks-grafana`, `05-eks-cost`.
+- `phase2-cloud/tests/playwright-eks/`: Playwright golden path against EKS; the other layers' logs sit beside it.
 
 ## Phase 3: destroy
 - `phase3-destroy/terraform-destroy.log`: `terraform destroy`, 21 resources destroyed.
 - `phase3-destroy/verify-destroyed.txt`: every check OK; nothing billable remains.
+- `phase3-destroy/terraform-destroy.log` and `verify-destroyed.txt` are from the final run (21 resources destroyed, nothing billable left).

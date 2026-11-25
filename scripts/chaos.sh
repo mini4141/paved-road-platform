@@ -27,7 +27,7 @@ pod_kill() {
 }
 
 node_drain() {
-  node="$(kubectl -n "$SVC" get pods -o jsonpath='{.items[0].spec.nodeName}')"
+  node="${DRAIN_NODE:-$(kubectl -n "$SVC" get pods -o jsonpath='{.items[0].spec.nodeName}')}"
   echo "-- before"; kubectl -n "$SVC" get pods -o wide; kubectl -n "$SVC" get pdb
   fails=0
   ( while true; do code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 3 "$BASE_URL/svc/$SVC/healthz" || echo 000)"; echo "$(date +%T) $code"; sleep 1; done ) >"$ROOT/.local/drain-probe.out" &

@@ -1,0 +1,73 @@
+# Deployed AWS resources (account IDs redacted)
+## terraform outputs
+cluster_name = "paved-road"
+ecr_registry = "<ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/paved-road"
+ecr_repository_urls = {
+  "go-http-service" = "<ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/paved-road/go-http-service"
+  "node-http-service" = "<ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/paved-road/node-http-service"
+  "portal" = "<ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/paved-road/portal"
+}
+region = "ap-southeast-2"
+vpc_id = "vpc-0bca0b0b94d28ebc2"
+## EKS cluster
+-----------------------------------------------------------------------------------------------
+|                                       DescribeCluster                                       |
++----------+----------------------------------------------------------------------------------+
+|  authMode|  API                                                                             |
+|  endpoint|  https://A16503C5E08F2B0CBE3665211832D9F0.gr7.ap-southeast-2.eks.amazonaws.com   |
+|  name    |  paved-road                                                                      |
+|  status  |  ACTIVE                                                                          |
+|  version |  1.37                                                                            |
++----------+----------------------------------------------------------------------------------+
+## node group
+-----------------------------------------
+|           DescribeNodegroup           |
++--------------+----------+-------------+
+|   capacity   |  disk    |   status    |
++--------------+----------+-------------+
+|  SPOT        |  20      |  ACTIVE     |
++--------------+----------+-------------+
+||               scaling               ||
+|+-------------+-----------+-----------+|
+|| desiredSize |  maxSize  |  minSize  ||
+|+-------------+-----------+-----------+|
+||  2          |  3        |  2        ||
+|+-------------+-----------+-----------+|
+||                types                ||
+|+-------------------------------------+|
+||  t3.large                           ||
+|+-------------------------------------+|
+## nodes
+NAME                                             STATUS   ROLES    AGE   VERSION               INTERNAL-IP   EXTERNAL-IP      OS-IMAGE                        KERNEL-VERSION                            CONTAINER-RUNTIME
+ip-10-20-17-87.ap-southeast-2.compute.internal   Ready    <none>   55m   v1.37.1-eks-9adbfea   10.20.17.87   16.179.134.170   Amazon Linux 2023.12.20261118   6.18.62-127.179.amzn2023.x86_64 (amd64)   containerd://2.3.7+unknown
+ip-10-20-9-242.ap-southeast-2.compute.internal   Ready    <none>   55m   v1.37.1-eks-9adbfea   10.20.9.242   32.236.187.179   Amazon Linux 2023.12.20261118   6.18.62-127.179.amzn2023.x86_64 (amd64)   containerd://2.3.7+unknown
+## VPC and subnets
+-------------------------------------------
+|              DescribeVpcs               |
++---------------+-------------------------+
+|     cidr      |           id            |
++---------------+-------------------------+
+|  10.20.0.0/16 |  vpc-0bca0b0b94d28ebc2  |
++---------------+-------------------------+
+------------------------------------------------------------------------------
+|                               DescribeSubnets                              |
++------------------+----------------+----------------------------+-----------+
+|        az        |     cidr       |            id              | publicIp  |
++------------------+----------------+----------------------------+-----------+
+|  ap-southeast-2b |  10.20.16.0/20 |  subnet-0a1ab00ba3865d570  |  True     |
+|  ap-southeast-2a |  10.20.0.0/20  |  subnet-05feec53ebad7dfba  |  True     |
++------------------+----------------+----------------------------+-----------+
+## ECR repositories
+--------------------------------------------------------------------------------------------------------------------
+|                                               DescribeRepositories                                               |
++-------------------------------+----------------------------------------------------------------------------------+
+|             name              |                                       uri                                        |
++-------------------------------+----------------------------------------------------------------------------------+
+|  paved-road/node-http-service |  <ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/paved-road/node-http-service  |
+|  paved-road/go-http-service   |  <ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/paved-road/go-http-service    |
+|  paved-road/portal            |  <ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/paved-road/portal             |
++-------------------------------+----------------------------------------------------------------------------------+
+## load balancer (created by the Traefik Service)
+## CloudWatch log group
+
+aws: [ERROR]: An error occurred (InvalidParameterException) when calling the DescribeLogGroups operation: 1 validation error detected: Value at 'logGroupNamePrefix' failed to satisfy constraint: Member must satisfy regular expression pattern: [\.\-_/#A-Za-z0-9]+

@@ -1,0 +1,53 @@
+NAMESPACE    NAME                                             REFERENCE               TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+orders-api   horizontalpodautoscaler.autoscaling/orders-api   Deployment/orders-api   cpu: 5%/50%   2         5         2          14m
+
+NAMESPACE     NAME                                    MIN AVAILABLE   MAX UNAVAILABLE   ALLOWED DISRUPTIONS   AGE
+kube-system   poddisruptionbudget.policy/coredns      N/A             1                 1                     56m
+orders-api    poddisruptionbudget.policy/orders-api   1               N/A               1                     14m
+traefik       poddisruptionbudget.policy/traefik      1               N/A               1                     24m
+
+NAMESPACE    NAME                                                                                  AGE
+monitoring   servicemonitor.monitoring.coreos.com/kps-alertmanager                                 23m
+monitoring   servicemonitor.monitoring.coreos.com/kps-apiserver                                    23m
+monitoring   servicemonitor.monitoring.coreos.com/kps-coredns                                      23m
+monitoring   servicemonitor.monitoring.coreos.com/kps-grafana                                      23m
+monitoring   servicemonitor.monitoring.coreos.com/kps-kubelet                                      23m
+monitoring   servicemonitor.monitoring.coreos.com/kps-operator                                     23m
+monitoring   servicemonitor.monitoring.coreos.com/kps-prometheus                                   23m
+monitoring   servicemonitor.monitoring.coreos.com/kube-prometheus-stack-kube-state-metrics         23m
+monitoring   servicemonitor.monitoring.coreos.com/kube-prometheus-stack-prometheus-node-exporter   23m
+opencost     servicemonitor.monitoring.coreos.com/opencost                                         23m
+orders-api   servicemonitor.monitoring.coreos.com/orders-api                                       14m
+
+NAMESPACE    NAME                                                                                    AGE
+monitoring   prometheusrule.monitoring.coreos.com/golden-services                                    23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-alertmanager.rules                             23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-config-reloaders                               23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-general.rules                                  23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-k8s.rules.container-cpu-usage-seconds-total    23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-k8s.rules.container-memory-cache               23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-k8s.rules.container-memory-rss                 23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-k8s.rules.container-memory-swap                23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-k8s.rules.container-memory-working-set-bytes   23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-k8s.rules.container-resource                   23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-k8s.rules.pod-owner                            23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kube-apiserver-availability.rules              23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kube-apiserver-burnrate.rules                  23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kube-apiserver-histogram.rules                 23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kube-apiserver-slos                            23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kube-prometheus-general.rules                  23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kube-prometheus-node-recording.rules           23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kube-state-metrics                             23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kubelet.rules                                  23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kubernetes-apps                                23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kubernetes-resources                           23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kubernetes-storage                             23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kubernetes-system                              23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kubernetes-system-apiserver                    23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-kubernetes-system-kubelet                      23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-node-exporter                                  23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-node-exporter.rules                            23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-node-network                                   23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-node.rules                                     23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-prometheus                                     23m
+monitoring   prometheusrule.monitoring.coreos.com/kps-prometheus-operator                            23m

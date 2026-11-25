@@ -1,0 +1,11 @@
+
+Running 1 test using 1 worker
+
+  ok 1 tests\portal.spec.ts:4:1 › create service becomes Healthy and is reachable (15.8s)
+
+  1 passed (18.9s)
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report ..\proof\phase2-cloud\tests\playwright-eks\html[39m
+[36m[39m

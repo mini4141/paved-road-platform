@@ -15,4 +15,6 @@ One line per decision: date, decision, reason.
 - 2026-11-25 | Golden services add a 5 s SIGTERM shutdown delay and a Traefik retry middleware. | The first pod-kill drill showed 1.5% errors (requests routed to a terminating pod); after the change it is 0%.
 - 2026-11-25 | The ApplicationSet injects the image registry only for the portal via `templatePatch`. | Several add-on charts ship strict value schemas that reject unknown keys.
 - 2026-11-25 | EKS version 1.37 (latest standard-support version per aws eks describe-cluster-versions). | Spec asks for the latest supported EKS version.
-- 2026-11-25 | Phase 2 was aborted after terraform apply (Docker Desktop engine stopped mid-deploy) and the stack was destroyed at the user's request; no cloud proof captured. | Never leave cloud resources running.
+- 2026-11-25 | (superseded by the 2026-11-26 redeploy) Phase 2 was aborted after terraform apply (Docker Desktop engine stopped mid-deploy) and the stack was destroyed at the user's request; no cloud proof captured. | Never leave cloud resources running.
+- 2026-11-26 | On EKS the Traefik LoadBalancer Service stayed pending: this AWS account cannot create load balancers (OperationNotPermitted). Tests, drills and screenshots used `kubectl port-forward` to Traefik. | Account-level restriction only AWS Support can lift; the Service, annotations and manifests are unchanged.
+- 2026-11-26 | `scripts/aws-env.sh` regenerates the EKS kubeconfig on every use and passes Windows paths to aws.exe. | A stale kubeconfig from a destroyed cluster pointed at a dead endpoint.

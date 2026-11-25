@@ -1,0 +1,4 @@
+=== RUN   TestHealthz
+--- PASS: TestHealthz (0.00s)
+PASS
+ok  	github.com/paved-road/go-http-service	(cached)

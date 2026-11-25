@@ -3,6 +3,7 @@
 # The tagging API can lag a few minutes, so every tag hit is retried before failing.
 set -uo pipefail
 . "$(dirname "$0")/aws-env.sh"
+export MSYS_NO_PATHCONV=1 # keep /aws/eks/... log-group prefixes literal
 NAME="${CLUSTER_NAME:-paved-road}"
 OUT="${1:-$ROOT/proof/phase3-destroy/verify-destroyed.txt}"
 mkdir -p "$(dirname "$OUT")"

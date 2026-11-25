@@ -1,0 +1,26 @@
+== charts/golden-service
+Summary: 9 resources found parsing stdin - Valid: 9, Invalid: 0, Errors: 0, Skipped: 0
+== charts/portal
+Summary: 6 resources found parsing stdin - Valid: 6, Invalid: 0, Errors: 0, Skipped: 0
+== charts/platform-observability
+Summary: 5 resources found parsing stdin - Valid: 5, Invalid: 0, Errors: 0, Skipped: 0
+== policies (kustomize)
+Summary: 6 resources found parsing stdin - Valid: 6, Invalid: 0, Errors: 0, Skipped: 0
+== gitops
+Summary: 3 resources found in 3 files - Valid: 3, Invalid: 0, Errors: 0, Skipped: 0
+== addon traefik (kind)
+Summary: 6 resources found parsing stdin - Valid: 6, Invalid: 0, Errors: 0, Skipped: 0
+== addon traefik (eks)
+Summary: 7 resources found parsing stdin - Valid: 7, Invalid: 0, Errors: 0, Skipped: 0
+== addon metrics-server (kind)
+Summary: 9 resources found parsing stdin - Valid: 9, Invalid: 0, Errors: 0, Skipped: 0
+== addon metrics-server (eks)
+Summary: 9 resources found parsing stdin - Valid: 9, Invalid: 0, Errors: 0, Skipped: 0
+== addon opencost (kind)
+Summary: 6 resources found parsing stdin - Valid: 6, Invalid: 0, Errors: 0, Skipped: 0
+== addon opencost (eks)
+Summary: 6 resources found parsing stdin - Valid: 6, Invalid: 0, Errors: 0, Skipped: 0
+== addon kyverno (kind)
+Summary: 68 resources found parsing stdin - Valid: 46, Invalid: 0, Errors: 0, Skipped: 22
+== addon kyverno (eks)
+Summary: 68 resources found parsing stdin - Valid: 46, Invalid: 0, Errors: 0, Skipped: 22

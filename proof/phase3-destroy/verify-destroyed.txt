@@ -1,4 +1,4 @@
-verify-destroyed at 2026-11-25T09:46:33Z (profile paved-road-platform-deployer, region ap-southeast-2)
+verify-destroyed at 2026-11-25T17:31:20Z (profile paved-road-platform-deployer, region ap-southeast-2)
 OK    EKS clusters
 OK    VPCs tagged Project=paved-road-platform
 OK    EC2 instances (not terminated)

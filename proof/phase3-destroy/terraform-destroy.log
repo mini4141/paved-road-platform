@@ -1,32 +1,32 @@
-module.network.data.aws_availability_zones.available: Reading...
-module.eks.data.aws_iam_policy_document.node_assume: Reading...
-module.eks.data.aws_iam_policy_document.eks_assume: Reading...
-module.eks.data.aws_iam_policy_document.eks_assume: Read complete after 0s [id=3552664922]
-module.eks.data.aws_iam_policy_document.node_assume: Read complete after 0s [id=2851119427]
 module.eks.aws_cloudwatch_log_group.cluster: Refreshing state... [id=/aws/eks/paved-road/cluster]
-module.ecr.aws_ecr_repository.this["go-http-service"]: Refreshing state... [id=paved-road/go-http-service]
+module.eks.data.aws_iam_policy_document.node_assume: Reading...
 module.ecr.aws_ecr_repository.this["portal"]: Refreshing state... [id=paved-road/portal]
+module.network.data.aws_availability_zones.available: Reading...
+module.eks.data.aws_iam_policy_document.eks_assume: Reading...
+module.ecr.aws_ecr_repository.this["go-http-service"]: Refreshing state... [id=paved-road/go-http-service]
 module.ecr.aws_ecr_repository.this["node-http-service"]: Refreshing state... [id=paved-road/node-http-service]
+module.eks.data.aws_iam_policy_document.node_assume: Read complete after 0s [id=2851119427]
+module.eks.data.aws_iam_policy_document.eks_assume: Read complete after 0s [id=3552664922]
+module.network.aws_vpc.this: Refreshing state... [id=vpc-0bca0b0b94d28ebc2]
 module.eks.aws_iam_role.node: Refreshing state... [id=paved-road-node]
 module.eks.aws_iam_role.cluster: Refreshing state... [id=paved-road-cluster]
-module.network.aws_vpc.this: Refreshing state... [id=vpc-02ad800bc5f1dd652]
 module.network.data.aws_availability_zones.available: Read complete after 2s [id=ap-southeast-2]
 module.eks.aws_iam_role_policy_attachment.cluster: Refreshing state... [id=paved-road-cluster/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy]
-module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"]: Refreshing state... [id=paved-road-node/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly]
-module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]: Refreshing state... [id=paved-road-node/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy]
 module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"]: Refreshing state... [id=paved-road-node/arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy]
-module.network.aws_internet_gateway.this: Refreshing state... [id=igw-0fcfb62f3c4e95cf8]
-module.network.aws_subnet.public[0]: Refreshing state... [id=subnet-0f29a90a59f691576]
-module.network.aws_subnet.public[1]: Refreshing state... [id=subnet-02798fad717150d1e]
-module.network.aws_route_table.public: Refreshing state... [id=rtb-0809570b0eea1038f]
+module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]: Refreshing state... [id=paved-road-node/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy]
+module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"]: Refreshing state... [id=paved-road-node/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly]
+module.network.aws_internet_gateway.this: Refreshing state... [id=igw-009d6e17daa14b2c1]
+module.network.aws_subnet.public[1]: Refreshing state... [id=subnet-0a1ab00ba3865d570]
+module.network.aws_subnet.public[0]: Refreshing state... [id=subnet-05feec53ebad7dfba]
+module.network.aws_route_table.public: Refreshing state... [id=rtb-0347b60c7f1f59fc6]
 module.eks.aws_eks_cluster.this: Refreshing state... [id=paved-road]
-module.network.aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0bbfca840bad2c639]
-module.network.aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-0bedbdd57fcc4bca9]
+module.network.aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-0e51a69e3165777d7]
+module.network.aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-03cc23b947ce8a528]
 module.eks.data.tls_certificate.oidc: Reading...
 module.eks.aws_eks_node_group.spot: Refreshing state... [id=paved-road:spot]
 module.eks.aws_eks_addon.pod_identity: Refreshing state... [id=paved-road:eks-pod-identity-agent]
 module.eks.data.tls_certificate.oidc: Read complete after 1s [id=29d150171678eee0e01996f5fda9adfbe0b987d9]
-module.eks.aws_iam_openid_connect_provider.irsa: Refreshing state... [id=arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.eks.ap-southeast-2.amazonaws.com/id/606A4F485FC2BBD2470FE906BE44A488]
+module.eks.aws_iam_openid_connect_provider.irsa: Refreshing state... [id=arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.eks.ap-southeast-2.amazonaws.com/id/A16503C5E08F2B0CBE3665211832D9F0]
 
 Terraform used the selected providers to generate the following execution
 plan. Resource actions are indicated with the following symbols:
@@ -142,11 +142,11 @@ Terraform will perform the following actions:
   - resource "aws_eks_addon" "pod_identity" {
       - addon_name               = "eks-pod-identity-agent" -> null
       - addon_version            = "v1.4.1-eksbuild.3" -> null
-      - arn                      = "arn:aws:eks:ap-southeast-2:<ACCOUNT_ID>:addon/paved-road/eks-pod-identity-agent/d6d108f8-219d-a47f-4be6-5da0640e7705" -> null
+      - arn                      = "arn:aws:eks:ap-southeast-2:<ACCOUNT_ID>:addon/paved-road/eks-pod-identity-agent/06d109bd-8780-169f-2a5d-75eb4a5d9abb" -> null
       - cluster_name             = "paved-road" -> null
-      - created_at               = "2026-11-25T09:01:28Z" -> null
+      - created_at               = "2026-11-25T16:12:41Z" -> null
       - id                       = "paved-road:eks-pod-identity-agent" -> null
-      - modified_at              = "2026-11-25T09:01:44Z" -> null
+      - modified_at              = "2026-11-25T16:12:57Z" -> null
       - region                   = "ap-southeast-2" -> null
       - tags                     = {} -> null
       - tags_all                 = {
@@ -168,22 +168,22 @@ Terraform will perform the following actions:
       - bootstrap_self_managed_addons = true -> null
       - certificate_authority         = [
           - {
-              - data = "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNakNDQWhxZ0F3SUJBZ0lSQUowdjlXcmVHeGxPZXVUK1hBNW1BNVl3RFFZSktvWklodmNOQVFFTEJRQXcKSnpFUU1BNEdBMVVFQ2hNSFFWZFRJRVZMVXpFVE1CRUdBMVVFQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TmpFeApNalV3T0RVeU1qZGFGdzB6TVRFeE1qUXdPRFV5TWpkYU1DY3hFREFPQmdOVkJBb1RCMEZYVXlCRlMxTXhFekFSCkJnTlZCQU1UQ210MVltVnlibVYwWlhNd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUIKQVFEWmozckhCQVpMbXdQQi95Z0xaZmpnT0JyUzVERDh6V2xqQmlUb3hKUXVuUHorU3JIM1BESDFWSVo4aVZ0aQplc2NGSWZybm5oUW1PaDZ2YWRsZitkUUFKQzBNSFB6bTl6b2NRU0czUmhhY1VwM24rTWQ0NGpHTTdYUDF3N2xqCm9sTkJ0VEpjdHRSRFdJMkhYQTZoVFlMcmp0WldFdzl4TmtOKzBOcW45ZmErY2I5Vm1RSS9rMVNMalVEWlg3clkKYjVRZkRJQVNtdWxjcjNRWC9OSVhuNGRNU3N4cmtsV0x0Z0xMNkhmL1JteFBsQ085QVpidXRTVWJ0NzRkNjRPQQpXeGFVSVk3NnFNWGVZeWk1L0ZqMWkySThvOVkrK3QxQ2JnREFhNHRJMWRKV3c0ekZhNEVzaDRIZU9vK1dpZHJPCjNVbWtKS015K1hNb083OFlYVEt6WGRDeEFnTUJBQUdqV1RCWE1BNEdBMVVkRHdFQi93UUVBd0lDcERBUEJnTlYKSFJNQkFmOEVCVEFEQVFIL01CMEdBMVVkRGdRV0JCVDZOMXA1VERrTHNlZWFtK0oxWlpjS0dPcUUxVEFWQmdOVgpIUkVFRGpBTWdncHJkV0psY201bGRHVnpNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUI0cHdQenp2clR2L3Q2CjJRdEFPRSs3QWNRN09VK01xOFdaeW1ZRWg1UlUyRHdXQnVQUkI1MEdrZDViTUZHbTBiSi9xYkxLNngzLzdINUUKYmZMRTZzNm00RTh5SXY5NEpNTkhxS0Ivc00weWVJN1B2Tk9nN0twSHZVMEpnUWJENlpVbThnRmlZb0d6MW1NTQoxZm9zc1ZudnE3cHFMaE5ZM25uZlJiM0RFTk5ITHc1VDN6a0VoUk14WC9pUElMaHdkSHEyZGNDRDBhWThCdGp2CmZIQU5vckc0TlBTcnlqZTFPZ3dQcTJJKzZMME90NnRCdXczeU5UclJCc2ltR2hITm1VRlo3cHkrdm5NbTRaTm4KVTBYVXdDUG01dVdLbkIwbERzNEVObCtQbkpXOGxyUGtTU3NSRGZUOS9XNzRVV3hNc3RpMlJ5M3A3eVhRRVZrQgpmeTZETmM4cgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+              - data = "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNakNDQWhxZ0F3SUJBZ0lSQVBsckRvaVVnVHRBTzNDVU9HbEFVYnN3RFFZSktvWklodmNOQVFFTEJRQXcKSnpFUU1BNEdBMVVFQ2hNSFFWZFRJRVZMVXpFVE1CRUdBMVVFQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TmpFeApNalV4TmpBME1UQmFGdzB6TVRFeE1qUXhOakEwTVRCYU1DY3hFREFPQmdOVkJBb1RCMEZYVXlCRlMxTXhFekFSCkJnTlZCQU1UQ210MVltVnlibVYwWlhNd2dnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUIKQVFEYURDeGF3RUt4WFFPZGJaS0hwcFNTUDJRdTBIZlVmdFlWSFRaa3VzOGFCZElSN3QrNERVRUorb1lpOHhDNAp2VjZUbWtPL3JKTWl2UUJqdDJya0NDY3dYNXJxQVE5TDZib21OVzlRWlEyN1BBT2pxQTNMMWpvQmg0bHVQM1pyCmpLYjVMNXNlT2VSOCtLNnhkUXdKY1N5V0x2U05xaEwvWVVCY2c0dmEwOUhzeis4b3RtYlZZN1llcVRzMGF6K2wKd0tHU3NhTTFLNTdYSC9DckVrSTM0QU1URGxXOTgzNGFpNDZZdUxvY0J0ckJHNHVMdVM0Ykx1eStrS2V3dlFUeQp3S050RDRISGdIREozTnR0VmUzaWtPS0xFU1hUbVFvaXRwaGxVMUxZSEJXMTFFRUFFNGZhNkkzYXBTV2Q1S1hvCk1uMDVLNUtDdEkvWFZXdVBJSEdhbGpQcEFnTUJBQUdqV1RCWE1BNEdBMVVkRHdFQi93UUVBd0lDcERBUEJnTlYKSFJNQkFmOEVCVEFEQVFIL01CMEdBMVVkRGdRV0JCUkxXR2NTcVZkRW1uSC9sd0NleFRWamtxcStpekFWQmdOVgpIUkVFRGpBTWdncHJkV0psY201bGRHVnpNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUURTQnd3cGJlTFpLRzhZCkJjUDl4aEE1UW9mRDJMVlk3UFVzaDY2RndMRjVuOG52bnNwZzZzSU1tZEZMaDVjaHZnRjhkLy8yajRDcXE0c1EKaUJBdDMybnZaeEl2d1h5Y0hLWC9FbWc5RG9yYVZnc3V6dm94UVEzMjdWSE1SYzRxdzd4TThmVDFNTC8yK3U1dgpWZWRMdGh4Q29SS293U1BuSDlzUWlweWNZTEVJQ01YZWVMTHRiN1ZQak9YK3dCa0xYRkU1T25pTldZcHVlN1pXCnNLNUtlRkRzeXVVNHExa0ZZS3RSNlpUc0dQSnloVUNLNEkzbWJJaWxadTJ3dTlqdGMzUU0vN3BmQkI3eS8zV2MKK1JCTWw1NzdNaURtWDZQeHhQSGRoTTdjVk1OK1B4VStZbnNpdWUvaUJnazZJNmVpb05jQlBLRVZNOTJYMDRDMgo5RFdOdkRUeQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
             },
         ] -> null
-      - created_at                    = "2026-11-25T08:52:05Z" -> null
+      - created_at                    = "2026-11-25T16:03:59Z" -> null
       - deletion_protection           = false -> null
       - enabled_cluster_log_types     = [
           - "api",
           - "audit",
         ] -> null
-      - endpoint                      = "https://606A4F485FC2BBD2470FE906BE44A488.gr7.ap-southeast-2.eks.amazonaws.com" -> null
+      - endpoint                      = "https://A16503C5E08F2B0CBE3665211832D9F0.gr7.ap-southeast-2.eks.amazonaws.com" -> null
       - id                            = "paved-road" -> null
       - identity                      = [
           - {
               - oidc = [
                   - {
-                      - issuer = "https://oidc.eks.ap-southeast-2.amazonaws.com/id/606A4F485FC2BBD2470FE906BE44A488"
+                      - issuer = "https://oidc.eks.ap-southeast-2.amazonaws.com/id/A16503C5E08F2B0CBE3665211832D9F0"
                     },
                 ]
             },
@@ -273,7 +273,7 @@ Terraform will perform the following actions:
         }
 
       - vpc_config {
-          - cluster_security_group_id = "sg-00402939cf595ad41" -> null
+          - cluster_security_group_id = "sg-<ACCOUNT_ID>4f26f" -> null
           - control_plane_egress_mode = "AWS_MANAGED" -> null
           - endpoint_private_access   = false -> null
           - endpoint_public_access    = true -> null
@@ -282,17 +282,17 @@ Terraform will perform the following actions:
             ] -> null
           - security_group_ids        = [] -> null
           - subnet_ids                = [
-              - "subnet-02798fad717150d1e",
-              - "subnet-0f29a90a59f691576",
+              - "subnet-05feec53ebad7dfba",
+              - "subnet-0a1ab00ba3865d570",
             ] -> null
-          - vpc_id                    = "vpc-02ad800bc5f1dd652" -> null
+          - vpc_id                    = "vpc-0bca0b0b94d28ebc2" -> null
         }
     }
 
   # module.eks.aws_eks_node_group.spot will be destroyed
   - resource "aws_eks_node_group" "spot" {
       - ami_type               = "AL2023_x86_64_STANDARD" -> null
-      - arn                    = "arn:aws:eks:ap-southeast-2:<ACCOUNT_ID>:nodegroup/paved-road/spot/82d108f7-2c90-4372-338e-0e7134ea82f3" -> null
+      - arn                    = "arn:aws:eks:ap-southeast-2:<ACCOUNT_ID>:nodegroup/paved-road/spot/dcd109bc-bc26-c0b5-67f6-6fe603439898" -> null
       - capacity_type          = "SPOT" -> null
       - cluster_name           = "paved-road" -> null
       - disk_size              = 20 -> null
@@ -309,7 +309,7 @@ Terraform will perform the following actions:
           - {
               - autoscaling_groups              = [
                   - {
-                      - name = "eks-spot-82d108f7-2c90-4372-338e-0e7134ea82f3"
+                      - name = "eks-spot-dcd109bc-bc26-c0b5-67f6-6fe603439898"
                     },
                 ]
                 # (1 unchanged attribute hidden)
@@ -317,8 +317,8 @@ Terraform will perform the following actions:
         ] -> null
       - status                 = "ACTIVE" -> null
       - subnet_ids             = [
-          - "subnet-02798fad717150d1e",
-          - "subnet-0f29a90a59f691576",
+          - "subnet-05feec53ebad7dfba",
+          - "subnet-0a1ab00ba3865d570",
         ] -> null
       - tags                   = {} -> null
       - tags_all               = {
@@ -345,11 +345,11 @@ Terraform will perform the following actions:
 
   # module.eks.aws_iam_openid_connect_provider.irsa will be destroyed
   - resource "aws_iam_openid_connect_provider" "irsa" {
-      - arn             = "arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.eks.ap-southeast-2.amazonaws.com/id/606A4F485FC2BBD2470FE906BE44A488" -> null
+      - arn             = "arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.eks.ap-southeast-2.amazonaws.com/id/A16503C5E08F2B0CBE3665211832D9F0" -> null
       - client_id_list  = [
           - "sts.amazonaws.com",
         ] -> null
-      - id              = "arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.eks.ap-southeast-2.amazonaws.com/id/606A4F485FC2BBD2470FE906BE44A488" -> null
+      - id              = "arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.eks.ap-southeast-2.amazonaws.com/id/A16503C5E08F2B0CBE3665211832D9F0" -> null
       - tags            = {} -> null
       - tags_all        = {
           - "Ephemeral" = "true"
@@ -360,7 +360,7 @@ Terraform will perform the following actions:
       - thumbprint_list = [
           - "06b25927c42a721631c1efd9431e648fa62e1e39",
         ] -> null
-      - url             = "oidc.eks.ap-southeast-2.amazonaws.com/id/606A4F485FC2BBD2470FE906BE44A488" -> null
+      - url             = "oidc.eks.ap-southeast-2.amazonaws.com/id/A16503C5E08F2B0CBE3665211832D9F0" -> null
     }
 
   # module.eks.aws_iam_role.cluster will be destroyed
@@ -380,7 +380,7 @@ Terraform will perform the following actions:
               - Version   = "2012-10-17"
             }
         ) -> null
-      - create_date           = "2026-11-25T08:51:41Z" -> null
+      - create_date           = "2026-11-25T16:03:37Z" -> null
       - force_detach_policies = false -> null
       - id                    = "paved-road-cluster" -> null
       - managed_policy_arns   = [
@@ -396,7 +396,7 @@ Terraform will perform the following actions:
           - "Owner"     = "alvieirvansyah"
           - "Project"   = "paved-road-platform"
         } -> null
-      - unique_id             = "AROAWSBP3NZTYN3VRY5Y3" -> null
+      - unique_id             = "AROAWSBP3NZTQKFB2RFBU" -> null
         # (3 unchanged attributes hidden)
     }
 
@@ -417,7 +417,7 @@ Terraform will perform the following actions:
               - Version   = "2012-10-17"
             }
         ) -> null
-      - create_date           = "2026-11-25T08:51:41Z" -> null
+      - create_date           = "2026-11-25T16:03:36Z" -> null
       - force_detach_policies = false -> null
       - id                    = "paved-road-node" -> null
       - managed_policy_arns   = [
@@ -435,7 +435,7 @@ Terraform will perform the following actions:
           - "Owner"     = "alvieirvansyah"
           - "Project"   = "paved-road-platform"
         } -> null
-      - unique_id             = "AROAWSBP3NZT2XDGS4I6B" -> null
+      - unique_id             = "AROAWSBP3NZT7IKS2MYMA" -> null
         # (3 unchanged attributes hidden)
     }
 
@@ -469,8 +469,8 @@ Terraform will perform the following actions:
 
   # module.network.aws_internet_gateway.this will be destroyed
   - resource "aws_internet_gateway" "this" {
-      - arn      = "arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:internet-gateway/igw-0fcfb62f3c4e95cf8" -> null
-      - id       = "igw-0fcfb62f3c4e95cf8" -> null
+      - arn      = "arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:internet-gateway/igw-009d6e17daa14b2c1" -> null
+      - id       = "igw-009d6e17daa14b2c1" -> null
       - owner_id = "<ACCOUNT_ID>" -> null
       - region   = "ap-southeast-2" -> null
       - tags     = {
@@ -483,20 +483,20 @@ Terraform will perform the following actions:
           - "Owner"     = "alvieirvansyah"
           - "Project"   = "paved-road-platform"
         } -> null
-      - vpc_id   = "vpc-02ad800bc5f1dd652" -> null
+      - vpc_id   = "vpc-0bca0b0b94d28ebc2" -> null
     }
 
   # module.network.aws_route_table.public will be destroyed
   - resource "aws_route_table" "public" {
-      - arn              = "arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:route-table/rtb-0809570b0eea1038f" -> null
-      - id               = "rtb-0809570b0eea1038f" -> null
+      - arn              = "arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:route-table/rtb-0347b60c7f1f59fc6" -> null
+      - id               = "rtb-0347b60c7f1f59fc6" -> null
       - owner_id         = "<ACCOUNT_ID>" -> null
       - propagating_vgws = [] -> null
       - region           = "ap-southeast-2" -> null
       - route            = [
           - {
               - cidr_block                 = "0.0.0.0/0"
-              - gateway_id                 = "igw-0fcfb62f3c4e95cf8"
+              - gateway_id                 = "igw-009d6e17daa14b2c1"
                 # (12 unchanged attributes hidden)
             },
         ] -> null
@@ -510,30 +510,30 @@ Terraform will perform the following actions:
           - "Owner"     = "alvieirvansyah"
           - "Project"   = "paved-road-platform"
         } -> null
-      - vpc_id           = "vpc-02ad800bc5f1dd652" -> null
+      - vpc_id           = "vpc-0bca0b0b94d28ebc2" -> null
     }
 
   # module.network.aws_route_table_association.public[0] will be destroyed
   - resource "aws_route_table_association" "public" {
-      - id             = "rtbassoc-0bbfca840bad2c639" -> null
+      - id             = "rtbassoc-03cc23b947ce8a528" -> null
       - region         = "ap-southeast-2" -> null
-      - route_table_id = "rtb-0809570b0eea1038f" -> null
-      - subnet_id      = "subnet-0f29a90a59f691576" -> null
+      - route_table_id = "rtb-0347b60c7f1f59fc6" -> null
+      - subnet_id      = "subnet-05feec53ebad7dfba" -> null
         # (1 unchanged attribute hidden)
     }
 
   # module.network.aws_route_table_association.public[1] will be destroyed
   - resource "aws_route_table_association" "public" {
-      - id             = "rtbassoc-0bedbdd57fcc4bca9" -> null
+      - id             = "rtbassoc-0e51a69e3165777d7" -> null
       - region         = "ap-southeast-2" -> null
-      - route_table_id = "rtb-0809570b0eea1038f" -> null
-      - subnet_id      = "subnet-02798fad717150d1e" -> null
+      - route_table_id = "rtb-0347b60c7f1f59fc6" -> null
+      - subnet_id      = "subnet-0a1ab00ba3865d570" -> null
         # (1 unchanged attribute hidden)
     }
 
   # module.network.aws_subnet.public[0] will be destroyed
   - resource "aws_subnet" "public" {
-      - arn                                            = "arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:subnet/subnet-0f29a90a59f691576" -> null
+      - arn                                            = "arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:subnet/subnet-05feec53ebad7dfba" -> null
       - assign_ipv6_address_on_creation                = false -> null
       - availability_zone                              = "ap-southeast-2a" -> null
       - availability_zone_id                           = "apse2-az1" -> null
@@ -542,7 +542,7 @@ Terraform will perform the following actions:
       - enable_lni_at_device_index                     = 0 -> null
       - enable_resource_name_dns_a_record_on_launch    = false -> null
       - enable_resource_name_dns_aaaa_record_on_launch = false -> null
-      - id                                             = "subnet-0f29a90a59f691576" -> null
+      - id                                             = "subnet-05feec53ebad7dfba" -> null
       - ipv6_native                                    = false -> null
       - map_customer_owned_ip_on_launch                = false -> null
       - map_public_ip_on_launch                        = true -> null
@@ -563,13 +563,13 @@ Terraform will perform the following actions:
           - "kubernetes.io/cluster/paved-road" = "shared"
           - "kubernetes.io/role/elb"           = "1"
         } -> null
-      - vpc_id                                         = "vpc-02ad800bc5f1dd652" -> null
+      - vpc_id                                         = "vpc-0bca0b0b94d28ebc2" -> null
         # (5 unchanged attributes hidden)
     }
 
   # module.network.aws_subnet.public[1] will be destroyed
   - resource "aws_subnet" "public" {
-      - arn                                            = "arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:subnet/subnet-02798fad717150d1e" -> null
+      - arn                                            = "arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:subnet/subnet-0a1ab00ba3865d570" -> null
       - assign_ipv6_address_on_creation                = false -> null
       - availability_zone                              = "ap-southeast-2b" -> null
       - availability_zone_id                           = "apse2-az3" -> null
@@ -578,7 +578,7 @@ Terraform will perform the following actions:
       - enable_lni_at_device_index                     = 0 -> null
       - enable_resource_name_dns_a_record_on_launch    = false -> null
       - enable_resource_name_dns_aaaa_record_on_launch = false -> null
-      - id                                             = "subnet-02798fad717150d1e" -> null
+      - id                                             = "subnet-0a1ab00ba3865d570" -> null
       - ipv6_native                                    = false -> null
       - map_customer_owned_ip_on_launch                = false -> null
       - map_public_ip_on_launch                        = true -> null
@@ -599,26 +599,26 @@ Terraform will perform the following actions:
           - "kubernetes.io/cluster/paved-road" = "shared"
           - "kubernetes.io/role/elb"           = "1"
         } -> null
-      - vpc_id                                         = "vpc-02ad800bc5f1dd652" -> null
+      - vpc_id                                         = "vpc-0bca0b0b94d28ebc2" -> null
         # (5 unchanged attributes hidden)
     }
 
   # module.network.aws_vpc.this will be destroyed
   - resource "aws_vpc" "this" {
-      - arn                                  = "arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:vpc/vpc-02ad800bc5f1dd652" -> null
+      - arn                                  = "arn:aws:ec2:ap-southeast-2:<ACCOUNT_ID>:vpc/vpc-0bca0b0b94d28ebc2" -> null
       - assign_generated_ipv6_cidr_block     = false -> null
       - cidr_block                           = "10.20.0.0/16" -> null
-      - default_network_acl_id               = "acl-07215eb7b1169f316" -> null
-      - default_route_table_id               = "rtb-0e<ACCOUNT_ID>7c0" -> null
-      - default_security_group_id            = "sg-0ad1a9fea0b9c1ace" -> null
+      - default_network_acl_id               = "acl-0e638ed312d86f1fb" -> null
+      - default_route_table_id               = "rtb-0ea68565fca1ad271" -> null
+      - default_security_group_id            = "sg-0c0100a17ab554ae8" -> null
       - dhcp_options_id                      = "dopt-089fcd55e32b11431" -> null
       - enable_dns_hostnames                 = true -> null
       - enable_dns_support                   = true -> null
       - enable_network_address_usage_metrics = false -> null
-      - id                                   = "vpc-02ad800bc5f1dd652" -> null
+      - id                                   = "vpc-0bca0b0b94d28ebc2" -> null
       - instance_tenancy                     = "default" -> null
       - ipv6_netmask_length                  = 0 -> null
-      - main_route_table_id                  = "rtb-0e<ACCOUNT_ID>7c0" -> null
+      - main_route_table_id                  = "rtb-0ea68565fca1ad271" -> null
       - network_firewall_association         = [] -> null
       - owner_id                             = "<ACCOUNT_ID>" -> null
       - region                               = "ap-southeast-2" -> null
@@ -646,144 +646,145 @@ Changes to Outputs:
       - portal            = "<ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/paved-road/portal"
     } -> null
   - region              = "ap-southeast-2" -> null
-  - vpc_id              = "vpc-02ad800bc5f1dd652" -> null
-module.network.aws_route_table_association.public[1]: Destroying... [id=rtbassoc-0bedbdd57fcc4bca9]
-module.network.aws_route_table_association.public[0]: Destroying... [id=rtbassoc-0bbfca840bad2c639]
-module.eks.aws_iam_openid_connect_provider.irsa: Destroying... [id=arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.eks.ap-southeast-2.amazonaws.com/id/606A4F485FC2BBD2470FE906BE44A488]
+  - vpc_id              = "vpc-0bca0b0b94d28ebc2" -> null
+module.network.aws_route_table_association.public[1]: Destroying... [id=rtbassoc-0e51a69e3165777d7]
 module.ecr.aws_ecr_repository.this["portal"]: Destroying... [id=paved-road/portal]
-module.ecr.aws_ecr_repository.this["go-http-service"]: Destroying... [id=paved-road/go-http-service]
+module.eks.aws_iam_openid_connect_provider.irsa: Destroying... [id=arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.eks.ap-southeast-2.amazonaws.com/id/A16503C5E08F2B0CBE3665211832D9F0]
+module.network.aws_route_table_association.public[0]: Destroying... [id=rtbassoc-03cc23b947ce8a528]
 module.eks.aws_eks_addon.pod_identity: Destroying... [id=paved-road:eks-pod-identity-agent]
+module.ecr.aws_ecr_repository.this["go-http-service"]: Destroying... [id=paved-road/go-http-service]
 module.ecr.aws_ecr_repository.this["node-http-service"]: Destroying... [id=paved-road/node-http-service]
-module.eks.aws_iam_openid_connect_provider.irsa: Destruction complete after 1s
-module.ecr.aws_ecr_repository.this["node-http-service"]: Destruction complete after 2s
-module.ecr.aws_ecr_repository.this["portal"]: Destruction complete after 3s
+module.eks.aws_iam_openid_connect_provider.irsa: Destruction complete after 2s
+module.ecr.aws_ecr_repository.this["portal"]: Destruction complete after 2s
+module.network.aws_route_table_association.public[1]: Destruction complete after 3s
+module.ecr.aws_ecr_repository.this["node-http-service"]: Destruction complete after 3s
 module.ecr.aws_ecr_repository.this["go-http-service"]: Destruction complete after 3s
+module.network.aws_route_table_association.public[0]: Destruction complete after 3s
+module.network.aws_route_table.public: Destroying... [id=rtb-0347b60c7f1f59fc6]
 module.eks.aws_eks_addon.pod_identity: Destruction complete after 3s
 module.eks.aws_eks_node_group.spot: Destroying... [id=paved-road:spot]
-module.network.aws_route_table_association.public[1]: Destruction complete after 3s
-module.network.aws_route_table_association.public[0]: Destruction complete after 3s
-module.network.aws_route_table.public: Destroying... [id=rtb-0809570b0eea1038f]
 module.network.aws_route_table.public: Destruction complete after 2s
-module.network.aws_internet_gateway.this: Destroying... [id=igw-0fcfb62f3c4e95cf8]
+module.network.aws_internet_gateway.this: Destroying... [id=igw-009d6e17daa14b2c1]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 00m10s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 00m10s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 00m10s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 00m20s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 00m20s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 00m20s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 00m30s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 00m30s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 00m30s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 00m40s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 00m40s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 00m40s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 00m50s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 00m50s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 00m50s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 01m00s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 01m00s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 01m00s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 01m10s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 01m10s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 01m10s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 01m20s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 01m20s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 01m20s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 01m30s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 01m30s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 01m30s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 01m40s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 01m40s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 01m40s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 01m50s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 01m50s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 01m50s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 02m00s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 02m00s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 02m00s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 02m10s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 02m10s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 02m10s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 02m20s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 02m20s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 02m20s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 02m30s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 02m30s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 02m30s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 02m40s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 02m40s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 02m40s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 02m50s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 02m50s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 02m50s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 03m00s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 03m00s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 03m00s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 03m10s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 03m10s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 03m10s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 03m20s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 03m20s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 03m20s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 03m30s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 03m30s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 03m30s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 03m40s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 03m40s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 03m40s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 03m50s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 03m50s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 03m50s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 04m00s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 04m00s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 04m00s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 04m10s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 04m10s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 04m10s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 04m20s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 04m20s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 04m20s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 04m30s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 04m30s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 04m30s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 04m40s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 04m40s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 04m40s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 04m50s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 04m50s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 04m50s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 05m00s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 05m00s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 05m00s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 05m10s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 05m10s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 05m10s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 05m20s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 05m20s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 05m20s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 05m30s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 05m30s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 05m30s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 05m40s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 05m40s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 05m40s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 05m50s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 05m50s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 05m50s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 06m00s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 06m00s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 06m00s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 06m10s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 06m10s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 06m10s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 06m20s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 06m20s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 06m20s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 06m30s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 06m30s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 06m30s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 06m40s elapsed]
-module.network.aws_internet_gateway.this: Still destroying... [id=igw-0fcfb62f3c4e95cf8, 06m40s elapsed]
-module.network.aws_internet_gateway.this: Destruction complete after 6m42s
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 06m40s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 06m50s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 06m50s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 07m00s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 07m00s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 07m10s elapsed]
+module.network.aws_internet_gateway.this: Still destroying... [id=igw-009d6e17daa14b2c1, 07m10s elapsed]
+module.network.aws_internet_gateway.this: Destruction complete after 7m10s
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 07m20s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 07m30s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 07m40s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 07m50s elapsed]
 module.eks.aws_eks_node_group.spot: Still destroying... [id=paved-road:spot, 08m00s elapsed]
 module.eks.aws_eks_node_group.spot: Destruction complete after 8m9s
-module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]: Destroying... [id=paved-road-node/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy]
 module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"]: Destroying... [id=paved-road-node/arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy]
+module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]: Destroying... [id=paved-road-node/arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy]
 module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"]: Destroying... [id=paved-road-node/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly]
 module.eks.aws_eks_cluster.this: Destroying... [id=paved-road]
-module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]: Destruction complete after 1s
-module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"]: Destruction complete after 1s
-module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"]: Destruction complete after 1s
+module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"]: Destruction complete after 2s
+module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"]: Destruction complete after 2s
+module.eks.aws_iam_role_policy_attachment.node["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]: Destruction complete after 2s
 module.eks.aws_iam_role.node: Destroying... [id=paved-road-node]
-module.eks.aws_iam_role.node: Destruction complete after 0s
+module.eks.aws_iam_role.node: Destruction complete after 1s
 module.eks.aws_eks_cluster.this: Still destroying... [id=paved-road, 00m10s elapsed]
 module.eks.aws_eks_cluster.this: Still destroying... [id=paved-road, 00m20s elapsed]
 module.eks.aws_eks_cluster.this: Still destroying... [id=paved-road, 00m30s elapsed]
 module.eks.aws_eks_cluster.this: Still destroying... [id=paved-road, 00m40s elapsed]
 module.eks.aws_eks_cluster.this: Still destroying... [id=paved-road, 00m50s elapsed]
 module.eks.aws_eks_cluster.this: Still destroying... [id=paved-road, 01m00s elapsed]
-module.eks.aws_eks_cluster.this: Still destroying... [id=paved-road, 01m10s elapsed]
-module.eks.aws_eks_cluster.this: Still destroying... [id=paved-road, 01m20s elapsed]
-module.eks.aws_eks_cluster.this: Destruction complete after 1m21s
-module.eks.aws_iam_role_policy_attachment.cluster: Destroying... [id=paved-road-cluster/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy]
+module.eks.aws_eks_cluster.this: Destruction complete after 1m10s
 module.eks.aws_cloudwatch_log_group.cluster: Destroying... [id=/aws/eks/paved-road/cluster]
-module.network.aws_subnet.public[0]: Destroying... [id=subnet-0f29a90a59f691576]
-module.network.aws_subnet.public[1]: Destroying... [id=subnet-02798fad717150d1e]
+module.eks.aws_iam_role_policy_attachment.cluster: Destroying... [id=paved-road-cluster/arn:aws:iam::aws:policy/AmazonEKSClusterPolicy]
+module.network.aws_subnet.public[0]: Destroying... [id=subnet-05feec53ebad7dfba]
+module.network.aws_subnet.public[1]: Destroying... [id=subnet-0a1ab00ba3865d570]
 module.eks.aws_iam_role_policy_attachment.cluster: Destruction complete after 1s
 module.eks.aws_iam_role.cluster: Destroying... [id=paved-road-cluster]
 module.eks.aws_cloudwatch_log_group.cluster: Destruction complete after 2s
 module.eks.aws_iam_role.cluster: Destruction complete after 1s
-module.network.aws_subnet.public[1]: Destruction complete after 3s
-module.network.aws_subnet.public[0]: Destruction complete after 3s
-module.network.aws_vpc.this: Destroying... [id=vpc-02ad800bc5f1dd652]
-module.network.aws_vpc.this: Destruction complete after 1s
+module.network.aws_subnet.public[1]: Destruction complete after 2s
+module.network.aws_subnet.public[0]: Destruction complete after 2s
+module.network.aws_vpc.this: Destroying... [id=vpc-0bca0b0b94d28ebc2]
+module.network.aws_vpc.this: Destruction complete after 2s
 
 Destroy complete! Resources: 21 destroyed.
