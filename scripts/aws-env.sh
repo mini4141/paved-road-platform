@@ -40,6 +40,7 @@ EOF
 
 # Host kubeconfig: kubectl refreshes tokens itself through `aws eks get-token` (exec plugin).
 use_eks_kubeconfig() {
+  rm -f "$EKS_KUBECONFIG" # never reuse an endpoint from a destroyed cluster
   aws eks update-kubeconfig --name "$(tf_output cluster_name)" --kubeconfig "$EKS_KUBECONFIG" \
     --alias paved-road-eks --profile "$AWS_PROFILE" >/dev/null
   export KUBECONFIG="$(winpath "$EKS_KUBECONFIG")"
