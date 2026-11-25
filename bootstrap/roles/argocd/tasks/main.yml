@@ -34,6 +34,29 @@
         server: https://kubernetes.default.svc
         config: '{"tlsClientConfig":{"insecure":false}}'
 
+- name: Create the monitoring namespace
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: monitoring
+
+- name: Generate the Grafana admin credentials once (kept only in the cluster)
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: grafana-admin
+        namespace: monitoring
+      stringData:
+        admin-user: admin
+        admin-password: "{{ lookup('ansible.builtin.password', '/dev/null length=24 chars=ascii_letters,digits') }}"
+  no_log: true
+
 - name: Apply the app-of-apps root application
   kubernetes.core.k8s:
     state: present

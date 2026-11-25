@@ -60,6 +60,11 @@ prometheus-node-exporter:
     limits: { memory: 64Mi }
 grafana:
   fullnameOverride: kps-grafana
+  # Stable admin credentials: the Secret is generated once by the Ansible bootstrap (never committed).
+  admin:
+    existingSecret: grafana-admin
+    userKey: admin-user
+    passwordKey: admin-password
   defaultDashboardsEnabled: true
   defaultDashboardsTimezone: utc
   ingress: { enabled: false } # routed by the IngressRoute in charts/platform-observability
