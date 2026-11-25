@@ -8,7 +8,8 @@ if [ "$(git -C "$ROOT" rev-parse HEAD)" != "$(git -C "$ROOT" rev-parse origin/ma
 fi
 if ! kind get clusters | grep -qx "$CLUSTER_NAME"; then
   log "creating kind cluster $CLUSTER_NAME"
-  kind create cluster --name "$CLUSTER_NAME" --config "$(winpath "$ROOT/scripts/kind-config.yaml")" --wait 120s
+  sed "s/__HTTP_PORT__/${KIND_HTTP_PORT:-8080}/" "$ROOT/scripts/kind-config.yaml" > "$ROOT/.local/kind-config.yaml"
+  kind create cluster --name "$CLUSTER_NAME" --config "$(winpath "$ROOT/.local/kind-config.yaml")" --wait 180s
 fi
 use_kind_kubeconfig
 log "building and loading images"

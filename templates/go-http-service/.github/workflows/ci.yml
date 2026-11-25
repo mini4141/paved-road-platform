@@ -1,0 +1,18 @@
+# Copied into every service repository created from this template: it calls the platform's reusable workflows.
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  build-test:
+    uses: mini4141/paved-road-platform/.github/workflows/reusable-build-test.yml@main
+    with:
+      language: go
+      working-directory: .
+      image-name: go-http-service
+  image-scan:
+    uses: mini4141/paved-road-platform/.github/workflows/reusable-image-scan.yml@main
+    with:
+      context: .
+      image-name: go-http-service

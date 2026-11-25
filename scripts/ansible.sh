@@ -12,7 +12,8 @@ NET_ARGS=(); [ -n "$NETWORK" ] && NET_ARGS=(--network "$NETWORK")
 docker run --rm "${NET_ARGS[@]}" \
   -v "$(winpath "$ROOT"):/repo:ro" \
   -v "$(winpath "$KUBECONFIG_FILE"):/kube/config:ro" \
-  -e ANSIBLE_FORCE_COLOR=0 \
+  -e ANSIBLE_FORCE_COLOR=0 -e ANSIBLE_INVENTORY=/repo/bootstrap/inventory/hosts.yml \
+  -e ANSIBLE_ROLES_PATH=/repo/bootstrap/roles -e ANSIBLE_INTERPRETER_PYTHON=auto_silent \
   "$IMAGE" ansible-playbook site.yml -e "env=$ENV_NAME" -e "registry=$REGISTRY" \
   -e "git_repo_url=${GIT_REPO_URL:-https://github.com/mini4141/paved-road-platform.git}" \
   -e "git_revision=${GIT_REVISION:-main}"

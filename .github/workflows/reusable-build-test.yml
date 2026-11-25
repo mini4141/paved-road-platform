@@ -1,0 +1,55 @@
+# Reusable workflow: build and test a golden-path service (Go or Node) and its container image.
+name: reusable-build-test
+
+on:
+  workflow_call:
+    inputs:
+      language:
+        description: go or node
+        type: string
+        required: true
+      working-directory:
+        type: string
+        required: true
+      image-name:
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.working-directory }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        if: inputs.language == 'go'
+        with:
+          go-version: "1.26"
+          cache-dependency-path: ${{ inputs.working-directory }}/go.sum
+      - name: Go vet and test
+        if: inputs.language == 'go'
+        run: |
+          go vet ./...
+          go test ./...
+
+      - uses: actions/setup-node@v4
+        if: inputs.language == 'node'
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: ${{ inputs.working-directory }}/package-lock.json
+      - name: Node build and test
+        if: inputs.language == 'node'
+        run: |
+          npm ci
+          npm run build
+          npm test
+
+      - name: Build container image
+        run: docker build -t "${{ inputs.image-name }}:ci" .

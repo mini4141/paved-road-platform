@@ -5,7 +5,7 @@ nodes:
     extraPortMappings:
       # Traefik NodePort (see gitops/addons/traefik/values-kind.yaml) -> localhost:8080
       - containerPort: 30080
-        hostPort: 8080
+        hostPort: __HTTP_PORT__
         protocol: TCP
   - role: worker
   - role: worker

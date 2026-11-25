@@ -1,0 +1,30 @@
+
+PLAY [Bootstrap the paved-road platform] ***************************************
+
+TASK [argocd : Add the Argo Helm repository] ***********************************
+[WARNING]: Platform linux on host localhost is using the discovered Python
+interpreter at /usr/local/bin/python3.12, but future installation of another
+Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+changed: [localhost]
+
+TASK [argocd : Install ArgoCD] *************************************************
+[DEPRECATION WARNING]: The 'status.values' return value is deprecated and will 
+be removed in version 8.0.0. Use 'status.release_values' instead. This feature 
+will be removed from kubernetes.core in version 8.0.0. Deprecation warnings can
+ be disabled by setting deprecation_warnings=False in ansible.cfg.
+changed: [localhost]
+
+TASK [argocd : Label the in-cluster target so the add-on ApplicationSet selects it (env and registry)] ***
+changed: [localhost]
+
+TASK [argocd : Apply the app-of-apps root application] *************************
+[WARNING]: metadata.finalizers: "resources-finalizer.argocd.argoproj.io":
+prefer a domain-qualified finalizer name including a path (/) to avoid
+accidental conflicts with other finalizer writers
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

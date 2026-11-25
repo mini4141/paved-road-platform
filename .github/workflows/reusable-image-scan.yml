@@ -1,0 +1,35 @@
+# Reusable workflow: build an image and scan it with Trivy (fails on HIGH/CRITICAL fixable vulnerabilities).
+name: reusable-image-scan
+
+on:
+  workflow_call:
+    inputs:
+      context:
+        description: Docker build context
+        type: string
+        required: true
+      image-name:
+        type: string
+        required: true
+      severity:
+        type: string
+        default: CRITICAL
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t "${{ inputs.image-name }}:scan" "${{ inputs.context }}"
+      - name: Trivy scan
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: ${{ inputs.image-name }}:scan
+          severity: ${{ inputs.severity }}
+          ignore-unfixed: true
+          exit-code: "1"
+          format: table
