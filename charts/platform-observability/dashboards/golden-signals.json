@@ -69,7 +69,7 @@
    "targets": [
     {
      "refId": "A",
-     "expr": "sum by (service) (rate(http_requests_total{service=~\"$service\",code=~\"5..\"}[1m])) / sum by (service) (rate(http_requests_total{service=~\"$service\"}[1m]))",
+     "expr": "(sum by (service) (rate(http_requests_total{service=~\"$service\",code=~\"5..\"}[1m])) / sum by (service) (rate(http_requests_total{service=~\"$service\"}[1m]))) or (sum by (service) (rate(http_requests_total{service=~\"$service\"}[1m])) * 0)",
      "legendFormat": "{{service}}",
      "datasource": {
       "type": "prometheus",
