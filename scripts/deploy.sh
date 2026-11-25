@@ -52,7 +52,7 @@ log "seed and tests"
 "$ROOT/scripts/seed.sh"
 wait_apps 600 >/dev/null
 kubectl get all -A | redact > "$P2/logs/kubectl-get-all.txt"
-PROOF_DIR="$P2" E2E=1 "$ROOT/scripts/test-all.sh" || log "some tests failed (see $P2/tests)"
+PLAYWRIGHT_DIR=playwright-eks PROOF_DIR="$P2" E2E=1 "$ROOT/scripts/test-all.sh" || log "some tests failed (see $P2/tests)"
 "$ROOT/scripts/drill-hpa.sh" orders-api "$P2/logs/drill-hpa.log" || true
 "$ROOT/scripts/chaos.sh" node-drain orders-api "$P2/logs/drill-node-drain.log" || true
 "$ROOT/scripts/chaos.sh" pod-kill orders-api "$P2/logs/drill-pod-kill.log" || true

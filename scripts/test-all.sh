@@ -21,7 +21,7 @@ run kubeconform "$ROOT/scripts/kubeconform.sh"
 if [ "${E2E:-0}" = "1" ]; then
   [ -n "${KUBECONFIG:-}" ] || use_kind_kubeconfig
   run k6-smoke bash -c "BASE_URL='$BASE_URL' SERVICE=orders-api k6 run --quiet '$(winpath "$ROOT/loadtest/k6-smoke.js")'"
-  run playwright bash -c "cd '$ROOT/e2e' && npm ci --silent && npx playwright install chromium >/dev/null && BASE_URL='$BASE_URL' REPORT_DIR='$PHASE_DIR/playwright' npx playwright test"
+  run playwright bash -c "cd '$ROOT/e2e' && npm ci --silent && npx playwright install chromium >/dev/null && BASE_URL='$BASE_URL' REPORT_DIR='$PHASE_DIR/${PLAYWRIGHT_DIR:-playwright}' npx playwright test"
 fi
 [ $FAILED -eq 0 ] && log "ALL TESTS PASSED" || log "SOME TESTS FAILED"
 exit $FAILED
