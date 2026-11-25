@@ -20,6 +20,7 @@ NAME="$(tf_output cluster_name)"; REGISTRY="$(tf_output ecr_registry)"; REG_HOST
 log "kubeconfig for $NAME"
 aws eks wait cluster-active --name "$NAME"
 use_eks_kubeconfig
+for _ in $(seq 40); do kubectl get nodes >/dev/null 2>&1 && break; sleep 10; done # new endpoint DNS can lag
 kubectl get nodes -o wide | redact
 
 log "build and push images to ECR"
