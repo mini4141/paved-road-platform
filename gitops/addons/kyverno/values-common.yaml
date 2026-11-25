@@ -16,3 +16,8 @@ reportsController:
     limits: { memory: 256Mi }
 cleanupController:
   enabled: false
+# No legacy kyverno.io policies exist here; skip the pre-install hook Job (Argo waits on its hook lifecycle).
+upgrade:
+  acknowledgeLegacyPoliciesNotEnforced: true
+  legacyPolicyCheck:
+    enabled: false
