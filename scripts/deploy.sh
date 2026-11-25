@@ -23,7 +23,9 @@ use_eks_kubeconfig
 kubectl get nodes -o wide | redact
 
 log "build and push images to ECR"
-aws ecr get-login-password | docker login --username AWS --password-stdin "$REG_HOST" >/dev/null
+for attempt in 1 2 3; do # Docker Desktop occasionally answers the auth call with a transient 500
+  aws ecr get-login-password | docker login --username AWS --password-stdin "$REG_HOST" >/dev/null && break; sleep 5
+done
 build_images
 for img in portal go-http-service node-http-service; do
   docker tag "$img:$IMAGE_TAG" "$REGISTRY/$img:$IMAGE_TAG"

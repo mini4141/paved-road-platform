@@ -1,0 +1,5 @@
+{
+    "UserId": "AIDAWSBP3NZT7FRXODPM6",
+    "Account": "<ACCOUNT_ID>",
+    "Arn": "arn:aws:iam::<ACCOUNT_ID>:user/paved-road-platform-deployer"
+}
