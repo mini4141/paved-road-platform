@@ -1,0 +1,45 @@
+== HPA drill for orders-api at 2026-11-25T08:01:59Z
+-- before
+NAME                                             REFERENCE               TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/orders-api   Deployment/orders-api   cpu: 2%/50%   2         5         2          80s
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/orders-api   2/2     2            2           80s
+15:02:01 replicas=2 cpu_utilization=2%
+15:02:13 replicas=2 cpu_utilization=12%
+15:02:24 replicas=2 cpu_utilization=12%
+15:02:35 replicas=5 cpu_utilization=257%
+15:02:46 replicas=5 cpu_utilization=395%
+15:02:57 replicas=5 cpu_utilization=252%
+15:03:10 replicas=5 cpu_utilization=252%
+15:03:22 replicas=5 cpu_utilization=248%
+15:03:33 replicas=5 cpu_utilization=252%
+15:03:46 replicas=5 cpu_utilization=234%
+15:03:57 replicas=5 cpu_utilization=234%
+15:04:08 replicas=5 cpu_utilization=207%
+15:04:19 replicas=5 cpu_utilization=212%
+15:04:30 replicas=5 cpu_utilization=228%
+15:04:42 replicas=5 cpu_utilization=228%
+15:04:53 replicas=5 cpu_utilization=223%
+15:05:04 replicas=5 cpu_utilization=233%
+15:05:16 replicas=5 cpu_utilization=232%
+15:05:30 replicas=5 cpu_utilization=244%
+15:05:44 replicas=5 cpu_utilization=244%
+15:05:55 replicas=5 cpu_utilization=244%
+15:06:07 replicas=5 cpu_utilization=233%
+15:06:18 replicas=5 cpu_utilization=205%
+15:06:29 replicas=5 cpu_utilization=205%
+15:06:42 replicas=5 cpu_utilization=203%
+-- k6 summary
+    http_req_failed
+    http_req_duration..............: avg=74.92ms min=51.21ms med=61.32ms max=546.72ms p(90)=109.07ms p(95)=135.85ms
+    http_req_failed................: 0.00%  0 out of 7874
+    http_reqs......................: 7874   28.193736/s
+-- after
+NAME                                             REFERENCE               TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/orders-api   Deployment/orders-api   cpu: 240%/50%   2         5         5          6m13s
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/orders-api   5/5     5            5           6m13s
+max replicas observed: 5
+RESULT: PASS (scaled to 5 replicas)

@@ -2,12 +2,33 @@
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
+  name: {{ include "golden.name" . }}-mw
+  labels: {{- include "golden.labels" . | nindent 4 }}
+spec:
+  chain:
+    middlewares:
+      - name: {{ include "golden.name" . }}-strip
+      - name: {{ include "golden.name" . }}-retry
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
   name: {{ include "golden.name" . }}-strip
   labels: {{- include "golden.labels" . | nindent 4 }}
 spec:
   stripPrefix:
     prefixes:
       - /svc/{{ include "golden.name" . }}
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ include "golden.name" . }}-retry
+  labels: {{- include "golden.labels" . | nindent 4 }}
+spec:
+  retry:
+    attempts: 3
+    initialInterval: 100ms
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -20,7 +41,7 @@ spec:
     - match: PathPrefix(`/svc/{{ include "golden.name" . }}`)
       kind: Rule
       middlewares:
-        - name: {{ include "golden.name" . }}-strip
+        - name: {{ include "golden.name" . }}-mw
       services:
         - name: {{ include "golden.name" . }}
           port: 80

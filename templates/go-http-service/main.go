@@ -104,6 +104,14 @@ func busy(d time.Duration) {
 	}
 }
 
+func shutdownDelay() time.Duration {
+	s, err := strconv.Atoi(env("SHUTDOWN_DELAY_SECONDS", "5"))
+	if err != nil {
+		return 0
+	}
+	return time.Duration(s) * time.Second
+}
+
 func initTracing(ctx context.Context) func(context.Context) error {
 	if os.Getenv("OTEL_EXPORTER_OTLP_ENDPOINT") == "" {
 		return func(context.Context) error { return nil }
@@ -135,6 +143,8 @@ func main() {
 		}
 	}()
 	<-ctx.Done()
+	// Keep serving while the endpoint removal propagates to the load balancer, then drain.
+	time.Sleep(shutdownDelay())
 	sctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	_ = srv.Shutdown(sctx)
