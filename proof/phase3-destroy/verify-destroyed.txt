@@ -1,0 +1,16 @@
+verify-destroyed at 2026-11-25T09:46:33Z (profile paved-road-platform-deployer, region ap-southeast-2)
+OK    EKS clusters
+OK    VPCs tagged Project=paved-road-platform
+OK    EC2 instances (not terminated)
+OK    EBS volumes
+OK    Network interfaces in tagged VPCs
+OK    NAT gateways
+OK    Elastic IPs
+OK    Load balancers (v2)
+OK    Classic load balancers
+OK    ECR repositories
+OK    CloudWatch log groups
+OK    IAM roles
+OK    IAM OIDC providers for EKS
+OK    resourcegroupstaggingapi: nothing tagged Project=paved-road-platform (or stale entries only)
+RESULT: NOTHING BILLABLE REMAINS

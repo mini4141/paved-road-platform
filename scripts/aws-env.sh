@@ -5,6 +5,7 @@ export AWS_PROFILE=paved-road-platform-deployer
 export AWS_REGION=ap-southeast-2
 export AWS_DEFAULT_REGION=ap-southeast-2
 export AWS_PAGER=""
+export MSYS_NO_PATHCONV=1
 TF_DIR="$ROOT/infra/envs/showcase"
 EKS_KUBECONFIG="$ROOT/.local/kubeconfig-eks"
 

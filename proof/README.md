@@ -33,3 +33,10 @@ logs and test reports are produced by the scripts named in the repository README
 - `kubeconform.log`: rendered Helm charts, add-on values (kind and eks) and Kustomize validated with kubeconform.
 - `k6-smoke.log`: k6 smoke: p95 < 500 ms and errors < 1%.
 - `playwright/junit.xml`, `playwright/html/`: Playwright golden path: create a service, wait for Healthy, open its URL.
+
+## Phase 2: cloud (EKS)
+Not captured. `terraform apply` succeeded (EKS 1.37, 21 resources; see `phase3-destroy/terraform-destroy.log` for the matching teardown), but the deploy was aborted before the bootstrap when Docker Desktop's engine stopped, and the stack was destroyed on request.
+
+## Phase 3: destroy
+- `phase3-destroy/terraform-destroy.log`: `terraform destroy`, 21 resources destroyed.
+- `phase3-destroy/verify-destroyed.txt`: every check OK; nothing billable remains.
